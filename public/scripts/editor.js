@@ -43,7 +43,7 @@ const showDetail = ev => {
                     <p>${item.name}</p>
                     <div id="action-links">
                         <a href="#" id="edit" onclick = "editCompanion('${id}','${item._id}')">edit</a>
-                        <a href="#" id="delete" onclick = "deleteCompanion('${item._id}')">delete</a>
+                        <a href="#" id="delete" onclick = "deleteCompanion('${id}','${item._id}')">delete</a>
                     </div>
                 </div>`
         );
@@ -207,6 +207,30 @@ const processSave = ev => {
                     <a href="#" id="delete" onclick = deleteDoctor('${doctor._id}')>delete</a>
                 </div>
             `;
+            
+            fetch('/doctors/'+ `${doctor._id}`+'/companions' )
+            .then(response => response.json())
+            .then(data => {
+                companions= data;
+                console.log(companions)
+                const listItems = data.map(item => `
+                        <div class="compan">
+                            <img src="${item.image_url}" />
+                            <p>${item.name}</p>
+                            <div id="action-links">
+                                <a href="#" id="edit" onclick = "editCompanion('${doctor._id}','${item._id}')">edit</a>
+                                <a href="#" id="delete" onclick = "deleteCompanion('${doctor._id}','${item._id}')">delete</a>
+                            </div>
+                        </div>`
+                );
+                document.getElementById('companions').innerHTML = `
+                    <div id ="companion-container">
+                        <h2>Companions</h2>
+                        ${listItems.join('')}
+                    <div>
+                    <br>
+                    <button type="button" onclick= addCompanion('${doctor._id}');>Add New Companion</button>`
+            });
         })
     }
       
@@ -473,7 +497,7 @@ const processCompanionCancel = id =>{
                     <p>${item.name}</p>
                     <div id="action-links">
                         <a href="#" id="edit" onclick = "editCompanion('${id}','${item._id}')">edit</a>
-                        <a href="#" id="delete" onclick = "deleteCompanion('${item._id}')">delete</a>
+                        <a href="#" id="delete" onclick = "deleteCompanion('${id}','${item._id}')">delete</a>
                     </div>
                 </div>` 
         );
@@ -561,7 +585,7 @@ const processCompanionSave = id => {
                             <p>${item.name}</p>
                             <div id="action-links">
                                 <a href="#" id="edit" onclick = "editCompanion('${id}', '${item._id}')">edit</a>
-                                <a href="#" id="delete" onclick = "deleteCompanion('${item._id}')">delete</a>
+                                <a href="#" id="delete" onclick = "deleteCompanion('${id}','${item._id}')">delete</a>
                             </div>
                         </div>`
                 );
@@ -715,7 +739,7 @@ const processCompanionEdit = id => {
                             <p>${item.name}</p>
                             <div id="action-links">
                                 <a href="#" id="edit" onclick = "editCompanion('${id}','${item._id}')">edit</a>
-                                <a href="#" id="delete" onclick = "deleteCompanion('${item._id}')">delete</a>
+                                <a href="#" id="delete" onclick = "deleteCompanion('${id}','${item._id}')">delete</a>
                             </div>
                         </div>`
                 );
@@ -733,14 +757,14 @@ const processCompanionEdit = id => {
     //id.preventDefault();
 }
 
-const deleteCompanion = id => {
+const deleteCompanion = (doc_id, com_id) => {
     console.log("delete!")
-    const companion = companions.filter(companion => companion._id === id)[0];
+    const companion = companions.filter(companion => companion._id === com_id)[0];
     if (confirm("Are you sure you want to delete " + `${companion.name}` +"?") == true)
     {
         console.log("let's delete")
 
-        fetch('/companions/' + `${id}`, {
+        fetch('/companions/' + `${com_id}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -756,17 +780,19 @@ const deleteCompanion = id => {
         })
         .then(companion =>
             {
-                fetch('/doctors/'+ `${id}`)
+                console.log("deleted", companion)
+                fetch('/doctors/'+ `${doc_id}`+'/companions' )
                 .then(response => response.json())
                 .then(data => {
-                    companions = data;
+                    companions= data;
+                    console.log(companions)
                     const listItems = data.map(item => `
                             <div class="compan">
                                 <img src="${item.image_url}" />
                                 <p>${item.name}</p>
                                 <div id="action-links">
-                                    <a href="#" id="edit" onclick = "editCompanion('${id}','${item._id}')">edit</a>
-                                    <a href="#" id="delete" onclick = "deleteCompanion('${item._id}')">delete</a>
+                                    <a href="#" id="edit" onclick = "editCompanion('${doc_id}','${item._id}')">edit</a>
+                                    <a href="#" id="delete" onclick = "deleteCompanion('${doc_id}','${item._id}')">delete</a>
                                 </div>
                             </div>`
                     );
@@ -776,7 +802,7 @@ const deleteCompanion = id => {
                             ${listItems.join('')}
                         <div>
                         <br>
-                        <button type="button" onclick= addCompanion('${id}');>Add New Companion</button>`
+                        <button type="button" onclick= addCompanion('${doc_id}');>Add New Companion</button>`
                 });
             })
 
