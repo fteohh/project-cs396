@@ -615,7 +615,7 @@ const editCompanion = (doc_id, com_id) => {
     console.log(companion.alive)
     console.log(companion)
 
-
+    //console.log(companion.doctors)
     document.querySelector('#companions').innerHTML =
         `<span class="error" aria-live="polite"></span>
         <form>
@@ -645,7 +645,7 @@ const editCompanion = (doc_id, com_id) => {
 
             <!-- Doctors -->
             <label for="doctors">Doctors</label>
-            <input type="text" id="companion-doctors" value = "${doc_id}">
+            <input type="text" id="companion-doctors" value ="${companion.doctors}">
             <br>
             <br>
 
@@ -656,14 +656,14 @@ const editCompanion = (doc_id, com_id) => {
             <br>
 
             <!-- Buttons -->
-            <button class="btn btn-main" id="create" onclick= processCompanionEdit('${com_id}')>Save</button>
+            <button class="btn btn-main" id="create" onclick= processCompanionEdit('${doc_id}','${com_id}')>Save</button>
             <button class="btn" id="cancel" onclick = processCompanionCancel('${doc_id}');>Cancel</button>
             <br>
             <br>
         </form>`;
 };
 
-const processCompanionEdit = id => {
+const processCompanionEdit = (doc_id, com_id) => {
     console.log("patching!")
     // your code here:
     // let doc_id= document.querySelector('#companion-doctors').value;
@@ -684,7 +684,14 @@ const processCompanionEdit = id => {
             return;
         }
     })
-    console.log(seasons_array)
+    let doctors_str = document.querySelector('#companion-doctors').value.split(",");
+    doctors_array = []
+    doctors_str.forEach(elem =>{
+        doctors_array.push(elem)
+    })
+    console.log(doctors_array)
+
+    // console.log(seasons_array)
 
     if (document.querySelector('#companion-name').value.length ==0){
         document.querySelector('.error').innerHTML= "Name is a required field.";
@@ -712,7 +719,7 @@ const processCompanionEdit = id => {
         return;
     }
     
-    fetch('/companions/' + `${id}`, {
+    fetch('/companions/' + `${com_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -722,14 +729,14 @@ const processCompanionEdit = id => {
             "character": document.querySelector('#companion-character').value,
             "alive": alive,
             "seasons": seasons_array,
-            "doctors": document.querySelector('#companion-doctors').value,
+            "doctors": doctors_array,
             "image_url":document.querySelector('#companion-image_url').value
         })
     })
     .then (response => response.json())
     .then(companion =>
         {
-            fetch('/doctors/'+ document.querySelector('#companion-doctors').value +'/companions')
+            fetch('/doctors/'+ `${doc_id}` +'/companions')
             .then(response => response.json())
             .then(data => {
                 companions = data;
@@ -738,8 +745,8 @@ const processCompanionEdit = id => {
                             <img src="${item.image_url}" />
                             <p>${item.name}</p>
                             <div id="action-links">
-                                <a href="#" id="edit" onclick = "editCompanion('${id}','${item._id}')">edit</a>
-                                <a href="#" id="delete" onclick = "deleteCompanion('${id}','${item._id}')">delete</a>
+                                <a href="#" id="edit" onclick = "editCompanion('${doc_id}','${item._id}')">edit</a>
+                                <a href="#" id="delete" onclick = "deleteCompanion('${doc_id}','${item._id}')">delete</a>
                             </div>
                         </div>`
                 );
@@ -749,7 +756,7 @@ const processCompanionEdit = id => {
                         ${listItems.join('')}
                     <div>
                     <br>
-                    <button type="button" onclick= addCompanion('${id}');>Add New Companion</button>`
+                    <button type="button" onclick= addCompanion('${doc_id}');>Add New Companion</button>`
             });
         })
     // don't forget to prevent the default
