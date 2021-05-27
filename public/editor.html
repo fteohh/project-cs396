@@ -1,28 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Doctor Who GUI Editor</title>
+        <title>Yuru-chara Map</title>
         <link rel="stylesheet" href="css/editor.css">
     </head>
     <body>
         <header>
-            <h1>Doctor Who Editor</h1>
-            <button id="reset" class="btn">Reset Data</button>
+            <img src="images/logo1.png" alt="yuru-chara map logo">
+            <h1>Yuru-chara Map</h1>
+            <li>Prefecture
+                <div class ="pulldown-menu">
+                    <ul class = "prefect">Hokkaidō</li>
+                        <li>Hokkaidō</li>
+                    </ul>
+                    <ul class = "prefect">Tōhoku
+                        <a>
+                            <li>Aomori</li>
+                        </a>
+                        <li>Iwate</li>
+                        <li>Miyagi</li>
+                        <li>Akita</li>
+                        <li>Yamagata</li>
+                        <li>Fukushima</li>
+                    </ul>
+                    <ul class = "prefect">Kantō
+                        <li>Ibaraki</li>
+                        <li>Tochigi</li>
+                        <li>Gunma</li>
+                        <li>Saitama</li>
+                        <li>Chiba</li>
+                        <li>Tōkyō</li>
+                        <li>Kanagawa</li>
+                    </ul>
+                    <ul class = "prefect">Chūbu
+                        <li>Niigata</li>
+                        <li>Toyama</li>
+                        <li>Ishikawa</li>
+                        <li>Fukui</li>
+                        <li>Yamanashi</li>
+                        <li>Nagano</li>
+                        <li>Gifu</li>
+                        <li>Shizuoka</li>
+                        <li>Aichi</li>
+                    </ul>
+                    <ul class = "prefect">Kansai
+                        <li>Mie</li>
+                        <a href= "#" onclick = showPrefectureDetail() data-name= "Shiga">
+                            <li>Shiga</li>
+                        </a>
+                        <li>Kyōto</li>
+                        <li>Ōsaka</li>
+                        <li>Hyōgo</li>
+                        <li>Nara</li>
+                        <li>Wakayama</li>
+                    </ul>
+                    <ul class = "prefect">Chūgoku
+                        <li>Tottori</li>
+                        <li>Shimane</li>
+                        <li>Okayama</li>
+                        <li>Hiroshima</li>
+                        <li>Yamaguchi</li>
+                    </ul>
+                    <ul class = "prefect">Shikoku
+                        <li>Tokushima</li>
+                        <li>Kagawa</li>
+                        <li>Ehime</li>
+                        <li>Kōchi</li>
+                    </ul>
+                    <ul class = "prefect">Kyūshū
+                        <li>Fukuoka</li>
+                        <li>Saga</li>
+                        <li>Nagasaki</li>
+                        <li>Kumamoto</li>
+                        <li>Ōita</li>
+                        <li>Miyazaki</li>
+                        <li>Kagoshima</li>
+                        <li>Okinawa</li>
+                    </ul>
+                </div>
+            </li>
+            <li>Landmark</li>
+            <li>Commercial</li>
         </header>
-        <aside id= "doc-list">
-            <!-- List of doctors goes here -->
-            List of doctors goes here.
+        <aside id= "yuru-list">
+            Panel of suggested/popular Yura-chara 
         </aside>
         <main>
-            <section id="doctor">
-                <!-- Selected doctor goes here -->
-                Selected doctor goes here.
+            <section id="map">
+                Interactive map with markers goes here.
             </section>
             
-            <section id="companions">
-                <!-- Doctor's corresponding companions go here -->
-                Selected doctor's companions go here.
-            </section>
 
         </main>
         <script src="scripts/editor.js" type="text/javascript"></script>

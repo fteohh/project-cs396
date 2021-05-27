@@ -2,824 +2,204 @@ const baseURL = 'http://localhost:8081';
 let doctors;
 let companions;
 
-const initResetButton = () => {
-    // if you want to reset your DB data, click this button:
-    document.querySelector('#reset').onclick = ev => {
-        fetch(`${baseURL}/reset/`)
-            .then(response => response.json())
-            .then(data => {
-                console.log('reset:', data);
-            });
-    };
-};
+var yuru_chara = [
+{
+    name: "Hikonyan",
+    address: "Hikone",
+    // category: ["landmark", "Hikone Castle"],
+    prefecture: "Shiga",
+    img_url: "https://scontent-ort2-2.xx.fbcdn.net/v/t31.18172-8/10557015_1131421616870314_4465642664736976474_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=JS-JW-n81P4AX-38DoK&_nc_ht=scontent-ort2-2.xx&oh=3781ef8cc085d98079970e0698dfdf6a&oe=60D2C41E",
+    id: 1
+
+},
+{
+    name: "Funassyi",
+    address: "Funabashi",
+    // category: ["landmark", "Hikone Castle"],
+    prefecture: "Chiba",
+    img_url: "https://64.media.tumblr.com/4d9deb46c48235fc291e6ddabc4b9ce3/tumblr_inline_nkwug4Y8oU1qz909t.jpg",
+    id: 2,
+}, 
+{
+    name: "Bari-san",
+    address: "Imabari", 
+    prefecture:"Ehime",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000002.jpg", 
+    id: 3
+
+},
+{
+    name: "Kumamon",
+    address: "Kumamoto", 
+    prefecture:"Kumamoto",
+    img_url: "https://lh3.googleusercontent.com/proxy/rRs2lzHV_XSgmdWBoFVID1o2WowQxx4tUfvt9nPGOvzX0LiVIOTDq-NXNweX6mgwOrD6ThdMPHsk42U-NqhV2TzjMo7pKLkCRXtcdfwIKQzF_x8e-UJEzSZxr6ENWb4T", 
+    id: 4
+
+},
+{
+    name: "Mikyan",
+    address: "Ehime", 
+    prefecture:"Ehime",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000940.jpg", 
+    id: 5
+},
+{
+    name: "Arukuma",
+    address: "Nagano", 
+    prefecture:"Nagano",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000357.jpg", 
+    id: 6
+},
+{
+    name: "Okazaemon",
+    address: "Aichi", 
+    prefecture:"Aichi",
+    img_url: "https://thesmartlocal.com/japan/wp-content/uploads/2020/07/Weird-Japanese-mascots-11.jpeg", 
+    id: 7
+},
+{
+    name: "Victoire Cheval Blanc Murao III",
+    address: "Nagano", 
+    prefecture:"Nagano",
+    img_url: "https://cdn-ak.f.st-hatena.com/images/fotolife/C/CNwriting/20190731/20190731202358.jpg", 
+    id: 8
+},
+{
+    name: "Ono Joe",
+    address: "Fukuoka", 
+    prefecture:"Fukuoka",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000099.jpg", 
+    id: 9
+},
+{
+    name: "Kaparu",
+    address: "Shiki", 
+    prefecture:"Saitama",
+    img_url: "https://cdn-ak.f.st-hatena.com/images/fotolife/g/gaou2/20181118/20181118231902.jpg", 
+    id: 10
+},
+{
+    name: "Gunma-chan",
+    address: "Gunma", 
+    prefecture:"Gunma",
+    img_url: "https://dot.asahi.com/S2000/upload/2015062300213_1.jpg", 
+    id: 11
+},
+{
+    name: "Sanomaru",
+    address: "Sano", 
+    prefecture:"Tochigi",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000020.jpg", 
+    id: 12
+},
+{
+    name: "Ayukoro-chan",
+    address: "Atsugi", 
+    prefecture:"Kanagawa",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000027.jpg", 
+    id: 13
+},
+{
+    name: "Unari-kun",
+    address: "Narita", 
+    prefecture:"Chiba",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000031.jpg", 
+    id: 14
+},
+{
+    name: "Pyoko-tan",
+    address: "Gifu", 
+    prefecture:"Gifu",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000353.jpg", 
+    id: 15
+},
+{
+    name: "Tochisuke",
+    address: "Tochigi", 
+    prefecture:"Tochigi",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00002023.jpg", 
+    id: 16
+},
+{
+    name: "Midomosu",
+    address: "Midori", 
+    prefecture:"Gunma",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00004028.jpg", 
+    id: 17
+},
+{
+    name: "Omapyon",
+    address: "Omachi", 
+    prefecture:"Nagano",
+    img_url: "https://pbs.twimg.com/media/Dh3uQ3GUcAIPeCx.jpg", 
+    id: 18
+},
+{
+    name: "Zao-sama",
+    address: "Zao", 
+    prefecture:"Miyagi",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00001016.jpg", 
+    id: 19
+},
+{
+    name: "Kaki-tan",
+    address: "Wakayama", 
+    prefecture:"Wakayama",
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000353.jpg", 
+    id: 20
+},
+
+]
 
 const showDetail = ev => {
     const id = ev.currentTarget.dataset.id;
-
-    // find the current doctor from the doctors array:
-    const doctor = doctors.filter(doctor => doctor._id === id)[0];
-    
-    // append the doctor template to the DOM:
-    document.querySelector('#doctor').innerHTML = `
-        <div id= "ind_doctor">
-            <h2>${doctor.name}</h2>
-            <br>
-            <img src="${doctor.image_url}" />
-            <p>Seasons: ${doctor.seasons}</p>
-        </div>
-        <div id="action-links">
-            <a href="#" id="edit" onclick = editDoctor('${id}')>edit</a>
-            <a href="#" id="delete" onclick = deleteDoctor('${id}')>delete</a>
-        </div>
-    `;
-
-    fetch('/doctors/'+ `${id}` +'/companions')
-    .then(response => response.json())
-    .then(data => {
-        companions = data;
-        const listItems = data.map(item => `
-                <div class="compan">
-                    <img src="${item.image_url}" />
-                    <p>${item.name}</p>
-                    <div id="action-links">
-                        <a href="#" id="edit" onclick = "editCompanion('${id}','${item._id}')">edit</a>
-                        <a href="#" id="delete" onclick = "deleteCompanion('${id}','${item._id}')">delete</a>
-                    </div>
-                </div>`
-        );
-        document.getElementById('companions').innerHTML = `
-            <div id ="companion-container">
-                <h2>Companions</h2>
-                ${listItems.join('')}
-            <div>
-            <br>
-            <button type="button" onclick= addCompanion('${id}');>Add New Companion</button>`
-    });
-}
-
-const attachEventHandlers = () => {
-    // once the unordered list has been attached to the DOM
-    // (by assigning the #doctors container's innerHTML),
-    // you can attach event handlers to the DOM:
-    document.querySelectorAll('#doc-list a').forEach(a => {
-        a.onclick = showDetail;
-    });
-};
-
-fetch('/doctors')
-    .then(response => response.json())
-    .then(data => {
-        // store the retrieved data in a global variable called "doctors"
-        doctors = data;
-        ordering = doctors.length;
-        const listItems = data.map(item => `
-            <li>
-                <a href="#" data-id="${item._id}">${item.name}</a>
-            </li>`
-        );
-        document.getElementById('doc-list').innerHTML = `
-            <ol>
-                ${listItems.join('')}
-            </ol>
-            <button type="button" onclick= addDoctor();>Add New Doctor</button>`
-    })
-    .then(attachEventHandlers);
-
-
-const addDoctor = () =>{
-    document.querySelector('#doctor').innerHTML =
-        `<span class="error" aria-live="polite"></span>
-        <form>
-            <!-- Name -->
-            <label for="name">Name</label>
-            <input type="text" id="name">
-            <br>
-            <br>
-
-            <!-- Seasons -->
-            <label for="seasons">Seasons</label>
-            <input type="text" id="seasons">
-            <br>
-            <br>
-
-            <!-- Ordering -->
-            <label for="ordering">Ordering</label>
-            <input type="text" id="ordering">
-            <br>
-            <br>
-
-            <!-- Image -->
-            <label for="image_url">Image</label>
-            <input type="text" id="image_url">
-            <br>
-            <br>
-
-            <!-- Buttons -->
-            <button class="btn btn-main" id="create" onclick= processSave()>Save</button>
-            
-            <button class="btn" id="cancel" onclick = processCancel();>Cancel</button>
-            <br>
-            <br>
-        </form>`;
-    document.getElementById('companions').innerHTML =  ``;
-};
-
-const processCancel = ev =>{
-    document.querySelector('#doctor').innerHTML = ``;
-}
-
-const processSave = ev => {
-    // your code here:
-    console.log("Save the doctor!")
-
-    let seasons_str = document.querySelector('#seasons').value;
-    seasons_str = seasons_str.split(", ");
-    console.log(seasons_str)
-    seasons_array = []
-    seasons_str.forEach(elem =>{
-        if (isNaN(parseInt(elem))== false){
-            console.log(elem)
-            seasons_array.push(parseInt(elem))
-        }
-        else {
-            document.querySelector('.error').innerHTML= "Please verify that your seasons field is correct.";
-            document.querySelector('.error').style.display = "block";
-            return;
-        }
-    })
-    console.log(seasons_array)
-
-    if (document.querySelector('#name').value.length ==0){
-        document.querySelector('.error').innerHTML= "Name is a required field.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-    if ( isNaN(parseInt(document.querySelector('#ordering').value))){
-        //console.log("not a number folks")
-        document.querySelector('.error').innerHTML= "Please verify that your ordering field is correct.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-
-    else{
-    fetch('/doctors', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "name": document.querySelector('#name').value,
-            "seasons": seasons_array,
-            "ordering": parseInt(document.querySelector('#ordering').value),
-            "image_url":document.querySelector('#image_url').value
-        })
-    })
-    .then (response => response.json())
-    .then(doctor =>
-        {
-            fetch('/doctors')
-                .then(response => response.json())
-                .then(data => {
-                    // store the retrieved data in a global variable called "doctors"
-                    doctors = data;
-                    ordering = doctors.length;
-                    const listItems = data.map(item => `
-                        <li>
-                            <a href="#" data-id="${item._id}">${item.name}</a>
-                        </li>`
-                    );
-                    document.getElementById('doc-list').innerHTML = `
-                        <ol>
-                            ${listItems.join('')}
-                        </ol>
-                        <button type="button" onclick= addDoctor();>Add New Doctor</button>`
-                })
-            .then(attachEventHandlers);
-            document.querySelector('#doctor').innerHTML = `
-                <div id= "ind_doctor">
-                    <h2>${doctor.name}</h2>
-                    <br>
-                    <img src="${doctor.image_url}" />
-                    <p>Seasons: ${doctor.seasons}</p>
-                </div>
-                <div id="action-links">
-                    <a href="#" id="edit" onclick = editDoctor('${doctor._id}')>edit</a>
-                    <a href="#" id="delete" onclick = deleteDoctor('${doctor._id}')>delete</a>
-                </div>
-            `;
-            
-            fetch('/doctors/'+ `${doctor._id}`+'/companions' )
-            .then(response => response.json())
-            .then(data => {
-                companions= data;
-                console.log(companions)
-                const listItems = data.map(item => `
-                        <div class="compan">
-                            <img src="${item.image_url}" />
-                            <p>${item.name}</p>
-                            <div id="action-links">
-                                <a href="#" id="edit" onclick = "editCompanion('${doctor._id}','${item._id}')">edit</a>
-                                <a href="#" id="delete" onclick = "deleteCompanion('${doctor._id}','${item._id}')">delete</a>
-                            </div>
-                        </div>`
-                );
-                document.getElementById('companions').innerHTML = `
-                    <div id ="companion-container">
-                        <h2>Companions</h2>
-                        ${listItems.join('')}
-                    <div>
-                    <br>
-                    <button type="button" onclick= addCompanion('${doctor._id}');>Add New Companion</button>`
-            });
-        })
-    }
-      
-
-    // don't forget to prevent the default
-    // submit button behavior from firing:
-    //ev.preventDefault();
-};
-
-const editDoctor = id => {
-    console.log("edit!");
+    console.log("click")
     console.log(id)
-    const doctor = doctors.filter(doctor => doctor._id === id)[0];
-    console.log(doctor.image_url)
 
+    const chara = yuru_chara.filter(chara => chara.id === id)[0];
 
-    document.querySelector('#doctor').innerHTML =
-        `<span class="error" aria-live="polite"></span>
-        <form novalidate >
-            <!-- Name -->
-            <label for="name">Name</label>
-            <input type="text" id="name" value="${doctor.name}">
-            <br>
-            <br>
-
-            <!-- Seasons -->
-            <label for="seasons">Seasons</label>
-            <input type="text" id="seasons" value="${doctor.seasons}">
-            <br>
-            <br>
-
-            <!-- Ordering -->
-            <label for="ordering">Ordering</label>
-            <input type="text" id="ordering" value="${doctor.ordering}">
-            <br>
-            <br>
-
-            <!-- Image -->
-            <label for="image_url">Image</label>
-            <input type="text" id="image_url" value="${doctor.image_url}">
-            <br>
-            <br>
-
-            <!-- Buttons -->
-            <button class="btn btn-main" id="create" onclick= processEdit('${id}')>Save</button>
-            
-            <button class="btn" id="cancel" onclick = processCancelEdit('${id}');>Cancel</button>
-            <br>
-            <br>
-        </form>`;
-};
-
-const processEdit = id => {
-    console.log("patching!")
-    // your code here:
-
-    let seasons_str = document.querySelector('#seasons').value;
-    seasons_str = seasons_str.split(", ");
-    seasons_array = []
-    seasons_str.forEach(elem =>{
-        seasons_array.push(parseInt(elem))
-    });
-
-    if (document.querySelector('#name').value.length ==0){
-        document.querySelector('.error').innerHTML= "Name is a required field.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-    console.log(seasons_array[0])
-    if (isNaN(seasons_array[0])) {
-        console.log("not right folks")
-        document.querySelector('.error').innerHTML= "Please verify that your seasons field is correct.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-    if ( isNaN(parseInt(document.querySelector('#ordering').value))){
-        console.log("not a number folks")
-        document.querySelector('.error').innerHTML= "Please verify that your ordering field is correct.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-
-    else{
-
-    fetch('/doctors/' + `${id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "name": document.querySelector('#name').value,
-            "seasons": seasons_array,
-            "ordering": parseInt(document.querySelector('#ordering').value),
-            "image_url":document.querySelector('#image_url').value
-        })
-    })
-    .then (response => response.json())
-    .then(doctor =>
-        {
-            fetch('/doctors')
-                .then(response => response.json())
-                .then(data => {
-                    // store the retrieved data in a global variable called "doctors"
-                    doctors = data;
-                    const listItems = data.map(item => `
-                        <li>
-                            <a href="#" data-id="${item._id}">${item.name}</a>
-                        </li>`
-                    );
-                    document.getElementById('doc-list').innerHTML = `
-                        <ol>
-                            ${listItems.join('')}
-                        </ol>
-                        <button type="button" onclick= addDoctor();>Add New Doctor</button>`
-                })
-            .then(attachEventHandlers);
-            document.querySelector('#doctor').innerHTML = `
-                <div id= "ind_doctor">
-                    <h2>${doctor.name}</h2>
-                    <br>
-                    <img src="${doctor.image_url}" />
-                    <p>Seasons: ${doctor.seasons}</p>
-                </div>
-                <div id="action-links">
-                    <a href="#" id="edit" onclick = editDoctor('${id}')>edit</a>
-                    <a href="#" id="delete" onclick = deleteDoctor('${id}')>delete</a>
-                </div>
-            `;
-        })
-    }
-    // don't forget to prevent the default
-    // submit button behavior from firing:
-    id.preventDefault();
-}
-
-const processCancelEdit = id =>{
-    const doctor = doctors.filter(doctor => doctor._id === id)[0];
-    document.querySelector('#doctor').innerHTML = `
+    document.querySelector('#map').innerHTML = `
         <div id= "ind_doctor">
-            <h2>${doctor.name}</h2>
-            <br>
-            <img src="${doctor.image_url}" />
-            <p>Seasons: ${doctor.seasons}</p>
-        </div>
-        <div id="action-links">
-            <a href="#" id="edit" onclick = editDoctor('${id}')>edit</a>
-            <a href="#" id="delete" onclick = deleteDoctor('${id}')>delete</a>
-        </div>
-    `;
-}
-
-const deleteDoctor = id => {
-    console.log("delete!")
-    const doctor = doctors.filter(doctor => doctor._id === id)[0];
-    if (confirm("Are you sure you want to delete " + `${doctor.name}` +"?") == true)
-    {
-        console.log("let's delete")
-
-        fetch('/doctors/' + `${id}`, {
-            method: 'DELETE'
-        })
-        .then(response => {
-            if (!response.ok) {
-                // send to catch block:
-                throw Error(response.statusText);
-            } else {
-                // because the endpoint returns a 
-                // null value, use the text() method
-                // instead of the .json() method:
-                return response.text();
-            }
-        })
-        .then(doctor =>
-            {
-                fetch('/doctors')
-                    .then(response => response.json())
-                    .then(data => {
-                        // store the retrieved data in a global variable called "doctors"
-                        doctors = data;
-                        const listItems = data.map(item => `
-                            <li>
-                                <a href="#" data-id="${item._id}">${item.name}</a>
-                            </li>`
-                        );
-                        document.getElementById('doc-list').innerHTML = `
-                            <ol>
-                                ${listItems.join('')}
-                            </ol>
-                            <button type="button" onclick= addDoctor();>Add New Doctor</button>`
-                    })
-                .then(attachEventHandlers);
-                document.querySelector('#doctor').innerHTML = ``;
-                document.querySelector('#companions').innerHTML = ``;
-            })
-
-        // don't forget to prevent the default
-        // submit button behavior from firing:
-        id.preventDefault();
-    }
+            <p>Map marker location for ${chara.name}<p>
+        </div>`
 };
 
-//// EXTRA CREDIT
-////
-////
-////
-
-const addCompanion = id =>{
-    document.querySelector('#companions').innerHTML =
-        `<span class="error" aria-live="polite"></span>
-        <form>
-            <!-- Name -->
-            <label for="name">Name</label>
-            <input type="text" id="companion-name">
-            <br>
-            <br>
-
-            <!-- Character -->
-            <label for="character">Character</label>
-            <input type="text" id="companion-character">
-            <br>
-            <br>
-
-            <!-- Alive -->
-            <label for="alive">Alive</label>
-            <input type="text" id="companion-alive">
-            <br>
-            <br>
-
-            <!-- Seasons -->
-            <label for="seasons">Seasons</label>
-            <input type="text" id="companion-seasons">
-            <br>
-            <br>
-
-            <!-- Doctors -->
-            <label for="doctors">Doctors</label>
-            <input type="text" id="companion-doctors" value = "${id}">
-            <br>
-            <br>
-
-            <!-- Image -->
-            <label for="image_url">Image</label>
-            <input type="text" id="companion-image_url">
-            <br>
-            <br>
-
-            <!-- Buttons -->
-            <button class="btn btn-main" id="create" onclick= processCompanionSave('${id}')>Save</button>
-            <button class="btn" id="cancel" onclick = processCompanionCancel('${id}');>Cancel</button>
-            <br>
-            <br>
-        </form>`;
-};
-
-const processCompanionCancel = id =>{
-    console.log("companion cancel")
-    fetch('/doctors/'+ `${id}` +'/companions')
-    .then(response => response.json())
-    .then(data => {
-        companions = data;
-        const listItems = data.map(item => `
-                <div class="compan">
-                    <img src="${item.image_url}" />
-                    <p>${item.name}</p>
-                    <div id="action-links">
-                        <a href="#" id="edit" onclick = "editCompanion('${id}','${item._id}')">edit</a>
-                        <a href="#" id="delete" onclick = "deleteCompanion('${id}','${item._id}')">delete</a>
-                    </div>
-                </div>` 
-        );
-        document.getElementById('companions').innerHTML = `
-            <div id ="companion-container">
-                <h2>Companions</h2>
-                ${listItems.join('')}
-            <div>
-            <br>
-            <button type="button" onclick= addCompanion('${id}');>Add New Companion</button>`
-    });
-}
-
-const processCompanionSave = id => {
-    // your code here:
-    console.log("Save the companion!")
-
-    let seasons_str = document.querySelector('#companion-seasons').value;
-    seasons_str = seasons_str.split(", ");
-    console.log(seasons_str)
-    seasons_array = []
-    seasons_str.forEach(elem =>{
-        if (isNaN(parseInt(elem))== false){
-            console.log(elem)
-            seasons_array.push(parseInt(elem))
-        }
-        else {
-            document.querySelector('.error').innerHTML= "Please verify that your seasons field is correct.";
-            document.querySelector('.error').style.display = "block";
-            return;
-        }
-    })
-    console.log(seasons_array)
-
-    if (document.querySelector('#companion-name').value.length ==0){
-        document.querySelector('.error').innerHTML= "Name is a required field.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-    if (document.querySelector('#companion-character').value.length ==0){
-        document.querySelector('.error').innerHTML= "Please verify that your character field is correct.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-    let alive;
-    if (document.querySelector('#companion-alive').value.toLowerCase() =="true" || (document.querySelector('#companion-alive').value.toLowerCase() =="false")){
-        if (document.querySelector('#companion-alive').value.toLowerCase() =="true")
-        {
-            alive = true;
-        }
-        else {
-            alive = false;
-        }
-    }
-    else{
-        document.querySelector('.error').innerHTML= "Please verify that your alive field is correct.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-
-    fetch('/companions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "name": document.querySelector('#companion-name').value,
-            "character": document.querySelector('#companion-character').value,
-            "alive": alive,
-            "seasons": seasons_array,
-            "doctors": document.querySelector('#companion-doctors').value,
-            "image_url":document.querySelector('#companion-image_url').value
-        })
-    })
-    .then (response => response.json())
-    .then(companion =>
-        {
-            fetch('/doctors/'+ `${id}` +'/companions')
-            .then(response => response.json())
-            .then(data => {
-                companions = data;
-                const listItems = data.map(item => `
-                        <div class="compan">
-                            <img src="${item.image_url}" />
-                            <p>${item.name}</p>
-                            <div id="action-links">
-                                <a href="#" id="edit" onclick = "editCompanion('${id}', '${item._id}')">edit</a>
-                                <a href="#" id="delete" onclick = "deleteCompanion('${id}','${item._id}')">delete</a>
-                            </div>
-                        </div>`
-                );
-                document.getElementById('companions').innerHTML = `
-                    <div id ="companion-container">
-                        <h2>Companions</h2>
-                        ${listItems.join('')}
-                    <div>
-                    <br>
-                    <button type="button" onclick= addCompanion('${id}');>Add New Companion</button>`
-            });
-        })
-
-      
-
-    // don't forget to prevent the default
-    // submit button behavior from firing:
-    //ev.preventDefault();
-};
-
-const editCompanion = (doc_id, com_id) => {
-    console.log("edit!");
-    const doctor = doctors.filter(doctor => doctor._id === doc_id)[0];
-    console.log(doctor)
-
-    const companion = companions.filter(companion => companion._id === com_id)[0];
-    console.log(companion.alive)
-    console.log(companion)
-
-    //console.log(companion.doctors)
-    document.querySelector('#companions').innerHTML =
-        `<span class="error" aria-live="polite"></span>
-        <form>
-            <!-- Name -->
-            <label for="name">Name</label>
-            <input type="text" id="companion-name" value = "${companion.name}">
-            <br>
-            <br>
-
-            <!-- Character -->
-            <label for="character">Character</label>
-            <input type="text" id="companion-character" value = "${companion.character}">
-            <br>
-            <br>
-
-            <!-- Alive -->
-            <label for="alive">Alive</label>
-            <input type="text" id="companion-alive" value = "${companion.alive}">
-            <br>
-            <br>
-
-            <!-- Seasons -->
-            <label for="seasons">Seasons</label>
-            <input type="text" id="companion-seasons" value = "${companion.seasons}">
-            <br>
-            <br>
-
-            <!-- Doctors -->
-            <label for="doctors">Doctors</label>
-            <input type="text" id="companion-doctors" value ="${companion.doctors}">
-            <br>
-            <br>
-
-            <!-- Image -->
-            <label for="image_url">Image</label>
-            <input type="text" id="companion-image_url" value = "${companion.image_url}">
-            <br>
-            <br>
-
-            <!-- Buttons -->
-            <button class="btn btn-main" id="create" onclick= processCompanionEdit('${doc_id}','${com_id}')>Save</button>
-            <button class="btn" id="cancel" onclick = processCompanionCancel('${doc_id}');>Cancel</button>
-            <br>
-            <br>
-        </form>`;
-};
-
-const processCompanionEdit = (doc_id, com_id) => {
-    console.log("patching!")
-    // your code here:
-    // let doc_id= document.querySelector('#companion-doctors').value;
-    // console.log(doc_id)
-
-    let seasons_str = document.querySelector('#companion-seasons').value;
-    seasons_str = seasons_str.split(", ");
-    console.log(seasons_str)
-    seasons_array = []
-    seasons_str.forEach(elem =>{
-        if (isNaN(parseInt(elem))== false){
-            console.log(elem)
-            seasons_array.push(parseInt(elem))
-        }
-        else {
-            document.querySelector('.error').innerHTML= "Please verify that your seasons field is correct.";
-            document.querySelector('.error').style.display = "block";
-            return;
-        }
-    })
-    let doctors_str = document.querySelector('#companion-doctors').value.split(",");
-    doctors_array = []
-    doctors_str.forEach(elem =>{
-        doctors_array.push(elem)
-    })
-    console.log(doctors_array)
-
-    // console.log(seasons_array)
-
-    if (document.querySelector('#companion-name').value.length ==0){
-        document.querySelector('.error').innerHTML= "Name is a required field.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-    if (document.querySelector('#companion-character').value.length ==0){
-        document.querySelector('.error').innerHTML= "Please verify that your character field is correct.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
-    let alive;
-    if (document.querySelector('#companion-alive').value.toLowerCase() =="true" || (document.querySelector('#companion-alive').value.toLowerCase() =="false")){
-        if (document.querySelector('#companion-alive').value.toLowerCase() =="true")
-        {
-            alive = true;
-        }
-        else {
-            alive = false;
-        }
-    }
-    else{
-        document.querySelector('.error').innerHTML= "Please verify that your alive field is correct.";
-        document.querySelector('.error').style.display = "block";
-        return;
-    }
+const showPrefectureDetail = ev => {
     
-    fetch('/companions/' + `${com_id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "name": document.querySelector('#companion-name').value,
-            "character": document.querySelector('#companion-character').value,
-            "alive": alive,
-            "seasons": seasons_array,
-            "doctors": doctors_array,
-            "image_url":document.querySelector('#companion-image_url').value
-        })
-    })
-    .then (response => response.json())
-    .then(companion =>
-        {
-            fetch('/doctors/'+ `${doc_id}` +'/companions')
-            .then(response => response.json())
-            .then(data => {
-                companions = data;
-                const listItems = data.map(item => `
-                        <div class="compan">
-                            <img src="${item.image_url}" />
-                            <p>${item.name}</p>
-                            <div id="action-links">
-                                <a href="#" id="edit" onclick = "editCompanion('${doc_id}','${item._id}')">edit</a>
-                                <a href="#" id="delete" onclick = "deleteCompanion('${doc_id}','${item._id}')">delete</a>
-                            </div>
-                        </div>`
-                );
-                document.getElementById('companions').innerHTML = `
-                    <div id ="companion-container">
-                        <h2>Companions</h2>
-                        ${listItems.join('')}
-                    <div>
-                    <br>
-                    <button type="button" onclick= addCompanion('${doc_id}');>Add New Companion</button>`
-            });
-        })
-    // don't forget to prevent the default
-    // submit button behavior from firing:
-    //id.preventDefault();
-}
+    console.log("click")
+    console.log(ev)
+    const chara = yuru_chara.filter(chara => chara.prefecture === ev.currentTarget.dataset.name)[0];
+    console.log(chara)
 
-const deleteCompanion = (doc_id, com_id) => {
-    console.log("delete!")
-    const companion = companions.filter(companion => companion._id === com_id)[0];
-    if (confirm("Are you sure you want to delete " + `${companion.name}` +"?") == true)
-    {
-        console.log("let's delete")
-
-        fetch('/companions/' + `${com_id}`, {
-            method: 'DELETE'
-        })
-        .then(response => {
-            if (!response.ok) {
-                // send to catch block:
-                throw Error(response.statusText);
-            } else {
-                // because the endpoint returns a 
-                // null value, use the text() method
-                // instead of the .json() method:
-                return response.text();
-            }
-        })
-        .then(companion =>
-            {
-                console.log("deleted", companion)
-                fetch('/doctors/'+ `${doc_id}`+'/companions' )
-                .then(response => response.json())
-                .then(data => {
-                    companions= data;
-                    console.log(companions)
-                    const listItems = data.map(item => `
-                            <div class="compan">
-                                <img src="${item.image_url}" />
-                                <p>${item.name}</p>
-                                <div id="action-links">
-                                    <a href="#" id="edit" onclick = "editCompanion('${doc_id}','${item._id}')">edit</a>
-                                    <a href="#" id="delete" onclick = "deleteCompanion('${doc_id}','${item._id}')">delete</a>
-                                </div>
-                            </div>`
-                    );
-                    document.getElementById('companions').innerHTML = `
-                        <div id ="companion-container">
-                            <h2>Companions</h2>
-                            ${listItems.join('')}
-                        <div>
-                        <br>
-                        <button type="button" onclick= addCompanion('${doc_id}');>Add New Companion</button>`
-                });
-            })
-
-        // don't forget to prevent the default
-        // submit button behavior from firing:
-        //id.preventDefault();
-    }
+    
+    // document.querySelector('#map').innerHTML = `
+    //     <div id= "ind_doctor">
+    //         <p>Map marker location for ${chara.name}<p>
+    //     </div>`
 };
 
 
+const listItems = yuru_chara.map(item => 
+    `<tr onclick = >
+        <td data-id = "${item._id}">
+            <img class= "thumb" src = ${item.img_url} onclick= showDetail()/>
+        </td>
+        <td>
+            <p>${item.name}</p>
+            ${item.prefecture} Prefecture
+        </td>
+        
+    </tr>`
+ );
 
-// invoke this function when the page loads:
-initResetButton();
+document.getElementById('yuru-list').innerHTML = `
+    <ul>
+        ${listItems.join('')}
+    </ul>
+    `;
+document.getElementById('yuru-list').innerHTML =
+    `<table> 
+            <tbody> 
+                ${listItems.join('')}
+            </tbody>
+        </table>`;
