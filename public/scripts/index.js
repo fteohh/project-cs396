@@ -159,7 +159,7 @@ const showDetail = ev => {
     const chara = yuru_chara.filter(chara => chara.id === id)[0];
 
     document.querySelector('#map').innerHTML = `
-        <div id= "ind_doctor">
+        <div>
             <p>Map marker location for ${chara.name}<p>
         </div>`
 };
@@ -168,14 +168,14 @@ const showPrefectureDetail = ev => {
     
     console.log("click")
     console.log(ev)
-    const chara = yuru_chara.filter(chara => chara.prefecture === ev.currentTarget.dataset.name)[0];
+    const chara = yuru_chara.filter(chara => chara.prefecture === ev.currentTarget.dataset.prefecture)[0];
     console.log(chara)
 
     
-    // document.querySelector('#map').innerHTML = `
-    //     <div id= "ind_doctor">
-    //         <p>Map marker location for ${chara.name}<p>
-    //     </div>`
+    document.querySelector('#map').innerHTML = `
+        <div >
+            <p>ev.currentTarget.dataset.prefecture)<p>
+        </div>`
 };
 
 
