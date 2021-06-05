@@ -6,13 +6,7 @@
   "scripts": {
     "populate": "cross-env NODE_ENV=development node ./config/scripts/execPopulateDB.js",
     "start": "cross-env NODE_ENV=development nodemon index.js",
-    "test": "cross-env NODE_ENV=development mocha --exit",
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "test": "cross-env NODE_ENV=development mocha --exit"
   },
   "author": "",
   "license": "ISC",
