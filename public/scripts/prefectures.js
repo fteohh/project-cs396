@@ -4,6 +4,92 @@ let companions;
 
 // const data = require("../config/data.json");
 
+var regions = [
+  {
+    name: "Hokkaidō",
+    prefectures: ["Hokkaidō"]
+
+},
+{
+  name: "Tōhoku",
+  prefectures: ["Aomori", "Iwate", "Miyagi", "Akita", "Yamagata", "Fukushima"]
+},
+{
+  name: "Kantō",
+  prefectures: ["Ibaraki", "Tochigi", "Gunma", "Saitama", "Chiba", "Tōkyō", 
+                "Kanagawa"]
+
+},
+{
+  name: "Chūbu",
+  prefectures: ["Niigata", "Toyama", "Ishikawa", "Fukui", 
+                "Yamanashi", "Nagano","Gifu", "Shizuoka","Aichi",]
+
+},
+
+{
+  name: "Kansai",
+  prefectures: ["Mie","Shiga","Kyōto","Ōsaka","Hyōgo","Nara","Wakayama",]
+
+},
+{
+name: "Chūgoku",
+prefectures: ["Tottori","Shimane","Okayama","Hiroshima","Yamaguchi"]
+
+},
+{
+  name:  "Kyūshū",
+  prefectures: ["Fukuoka","Saga","Nagasaki","Kumamoto","Ōita","Miyazaki","Kagoshima","Okinawa"]
+
+},
+{
+  name:  "Shikoku",
+  prefectures: ["Fukuoka","Saga","Nagasaki","Kumamoto","Ōita","Miyazaki","Kagoshima","Okinawa"]
+
+},
+]
+
+const prefectures =(region) =>{
+  var prefs = region.prefectures
+  console.log(prefs)
+  return prefs.map(item=>
+    `<a href="#" >${item}</a>`
+    )
+}
+
+const listItems = regions.map(item => 
+  `<tr>
+      <td >
+        <p style="font-weight: bold;">${item.name}:</p>
+      </td>
+      <td>
+          ${prefectures(item).join('    ')}
+      </td>
+  </tr>`
+);
+
+// document.getElementById('prefecture-list').innerHTML = `
+//   <ul>
+//       ${listItems.join('')}
+//   </ul>
+//   `;
+document.getElementById('prefecture-list').innerHTML +=
+  `<h3>Regions and Prefectures</h3>
+      <table> 
+          <tbody> 
+              ${listItems.join('')}
+          </tbody>
+      </table>`;
+
+
+
+
+
+
+
+
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiZnRlb2giLCJhIjoiY2twYnZ1dWJmMHNjcDMwbjJ3OXBjdmRqZyJ9.BUapBisSyzUKg5TT819v-w';
 var map = new mapboxgl.Map({
 container: 'map', // container ID
@@ -610,56 +696,56 @@ var yuru_chara = [
 
 
 
-const showDetail = ev => {
-    const id = ev.currentTarget.dataset.id;
-    console.log("click")
-    console.log(id)
+// const showDetail = ev => {
+//     const id = ev.currentTarget.dataset.id;
+//     console.log("click")
+//     console.log(id)
 
-    const chara = yuru_chara.filter(chara => chara.id === id)[0];
+//     const chara = yuru_chara.filter(chara => chara.id === id)[0];
 
-    document.querySelector('#map').innerHTML = `
-        <div>
-            <p>Map marker location for ${chara.name}<p>
-        </div>`
-};
+//     document.querySelector('#map').innerHTML = `
+//         <div>
+//             <p>Map marker location for ${chara.name}<p>
+//         </div>`
+// };
 
-const showPrefectureDetail = ev => {
+// const showPrefectureDetail = ev => {
     
-    console.log("click")
-    console.log(ev)
-    const chara = yuru_chara.filter(chara => chara.prefecture === ev.currentTarget.dataset.prefecture)[0];
-    console.log(chara)
+//     console.log("click")
+//     console.log(ev)
+//     const chara = yuru_chara.filter(chara => chara.prefecture === ev.currentTarget.dataset.prefecture)[0];
+//     console.log(chara)
 
     
-    document.querySelector('#map').innerHTML = `
-        <div >
-            <p>ev.currentTarget.dataset.prefecture)<p>
-        </div>`
-};
+//     document.querySelector('#map').innerHTML = `
+//         <div >
+//             <p>ev.currentTarget.dataset.prefecture)<p>
+//         </div>`
+// };
 
 
-const listItems = yuru_chara.map(item => 
-    `<tr onclick = >
-        <td data-id = "${item._id}">
-            <img class= "thumb" src = ${item.img_url} onclick= showDetail()/>
-        </td>
-        <td>
-            <p>${item.name}</p>
-            ${item.prefecture} Prefecture
-        </td>
+// const listItems = yuru_chara.map(item => 
+//     `<tr onclick = >
+//         <td data-id = "${item._id}">
+//             <img class= "thumb" src = ${item.img_url} onclick= showDetail()/>
+//         </td>
+//         <td>
+//             <p>${item.name}</p>
+//             ${item.prefecture} Prefecture
+//         </td>
         
-    </tr>`
- );
+//     </tr>`
+//  );
 
 // document.getElementById('yuru-list').innerHTML = `
 //     <ul>
 //         ${listItems.join('')}
 //     </ul>
 //     `;
-document.getElementById('yuru-list').innerHTML +=
-    `<h3>Featured Yuru-chara</h3>
-        <table> 
-            <tbody> 
-                ${listItems.join('')}
-            </tbody>
-        </table>`;
+// document.getElementById('yuru-list').innerHTML =
+//     `<h3>Featured Yuru-chara</h3>
+//         <table> 
+//             <tbody> 
+//                 ${listItems.join('')}
+//             </tbody>
+//         </table>`;

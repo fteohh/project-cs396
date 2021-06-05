@@ -1,0 +1,320 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hikonyan",
+        "place_name": "Hikone Castle, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          136.251755,
+          35.277014
+        ],
+        "type": "Point"
+      },
+      "id": "3f0559910354ce6131b392b1429b8b3e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Victoire Cheval Blanc Murao III",
+        "place_name": "Hakuba, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          137.834479,
+          36.690826
+        ],
+        "type": "Point"
+      },
+      "id": "locality.12362226399370330"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Zao-sama",
+        "place_name": "Zao, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          140.616435,
+          38.092173
+        ],
+        "type": "Point"
+      },
+      "id": "locality.13879286759511790"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bari-san",
+        "place_name": "Imabari, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          132.99778,
+          34.06611
+        ],
+        "type": "Point"
+      },
+      "id": "place.10678879742735600"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kaparu",
+        "place_name": "Shiki, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          139.58028,
+          35.83667
+        ],
+        "type": "Point"
+      },
+      "id": "place.10908615303601800"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sanomaru",
+        "place_name": "Sano, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          139.57833,
+          36.31444
+        ],
+        "type": "Point"
+      },
+      "id": "place.11214483383766200"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Funassyi",
+        "place_name": "Funabashi, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          139.9825,
+          35.69472
+        ],
+        "type": "Point"
+      },
+      "id": "place.12256616653311690"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ōmapyon",
+        "place_name": "Ōmachi, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          137.85,
+          36.5
+        ],
+        "type": "Point"
+      },
+      "id": "place.12357117027270150"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tochisuke",
+        "place_name": "Tochigi, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          139.73028,
+          36.38139
+        ],
+        "type": "Point"
+      },
+      "id": "place.12771147247576390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nemurou",
+        "place_name": "Nemuro, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          145.58306,
+          43.33
+        ],
+        "type": "Point"
+      },
+      "id": "place.13190943157241120"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Midomosu",
+        "place_name": "Midori, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          139.28111,
+          36.39472
+        ],
+        "type": "Point"
+      },
+      "id": "place.19414762125571260"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Okazaemon",
+        "place_name": "Aichi, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          137.16667,
+          34.95
+        ],
+        "type": "Point"
+      },
+      "id": "place.6033773650751410"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pyoko-tan",
+        "place_name": "Gifu, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          136.76667,
+          35.41667
+        ],
+        "type": "Point"
+      },
+      "id": "place.6225522181764370"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kaki-tan",
+        "place_name": "Hashimoto, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          135.6,
+          34.31667
+        ],
+        "type": "Point"
+      },
+      "id": "place.7376571163889540"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ono Joe",
+        "place_name": "Onojo, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          130.47889,
+          33.536389
+        ],
+        "type": "Point"
+      },
+      "id": "place.7490567628070580"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ayukoro-chan",
+        "place_name": "Atsugi, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          139.36667,
+          35.43333
+        ],
+        "type": "Point"
+      },
+      "id": "place.9169596883911460"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Unari-kun",
+        "place_name": "Narita, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          140.31667,
+          35.78333
+        ],
+        "type": "Point"
+      },
+      "id": "place.9841918300412650"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arukuma",
+        "place_name": "Nagano, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          138.1,
+          36.25
+        ],
+        "type": "Point"
+      },
+      "id": "region.10028790609758740"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mikyan",
+        "place_name": "Ehime, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          132.833329,
+          33.83333
+        ],
+        "type": "Point"
+      },
+      "id": "region.10259198174594300"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gunma-chan",
+        "place_name": "Gunma, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          139.11667,
+          36.36667
+        ],
+        "type": "Point"
+      },
+      "id": "region.9119965733096950"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kumamon",
+        "place_name": "Kumamoto, Japan"
+      },
+      "geometry": {
+        "coordinates": [
+          130.66667,
+          32.71667
+        ],
+        "type": "Point"
+      },
+      "id": "region.9859515157060600"
+    }
+  ],
+  "type": "FeatureCollection"
+}
