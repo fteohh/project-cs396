@@ -15,10 +15,10 @@ body {
 }
 
 header, main, aside {
-    /* border: dotted 1px #CCC; */
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* header, drop down menu styling */
 header {
     grid-area: top;
     display: flex;
@@ -27,11 +27,14 @@ header {
     background-color: #20639B;
     padding: 20px;
 }
+
 header img{
     height: 95px;
 }
+
 header h1, #title{
     margin-right: 300px;
+    padding: 5px;
     text-decoration: none;
     font-size: larger;
     color: #F6D55C;
@@ -53,9 +56,7 @@ av.top-nav ul{
 header li {
 font-family: sans-serif;
 font-weight: bold;
-/* margin: 15px; */
 display: inline-block;
-/* padding: 2px; */
 user-select: none;
 position: relative;
 }
@@ -107,12 +108,9 @@ header .pulldown-menu li{
 color: #333;
 font-weight: 168;
 }
-
-
 .prefect{
     margin: 0;
 }
-
 
 .dropdown a:hover .pulldown-menu {
     display: flex;
@@ -127,7 +125,7 @@ font-weight: 168;
     justify-content: space-between;
 }
 
-
+/* image styling */
 
 .thumb {
     width: 140px;
@@ -135,6 +133,13 @@ font-weight: 168;
     border-radius: 10px;
 }
 
+.map-thumb{
+    width: 100px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+/* styling the site below the header */
 
 aside {
     grid-area: left;
@@ -165,57 +170,7 @@ aside{
 }
 
 
-.error {
-    display: none;
-    background: rgba(161, 51, 51, 0.342);
-    color: rgb(160, 6, 6);
-    padding: 5px;
-    border-radius: 5px;
-}
-
-
-/* Form Styles */
-.btn-main {
-    background-color: #7952b3;
-    border-color: #7952b3;
-    color: #fff;
-}
-.btn {
-    font-weight: 600;
-    border-radius: .3rem;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.btn:hover, .btn:active {
-    background-color: #EEE;
-    border-color: #61428f;
-}
-
-.btn-main:hover, .btn-main:active, nav a:hover {
-    color: #fff;
-    background-color: #61428f;
-    border-color: #61428f;
-}
-
-input{
-    width: 100%;
-    font-size: medium;
-}
-
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
     #doctor {
         flex: 1 1 100%;
     }
@@ -225,4 +180,4 @@ input{
     main {
         flex-direction: column;
     }  
-}
+} */

@@ -1,0 +1,462 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    margin: auto;
+    overflow: scroll;
+    scroll-behavior: smooth;
+
+}
+
+body {
+    margin: 0;
+    display: grid;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.4em;
+    grid-template-columns: 700px auto;
+    grid-template-rows: 70px auto;
+    grid-template-areas: 
+        "top top"
+        "main main";
+    /* color: #173F5F; */
+}
+
+/* center screen */
+#screen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    padding-top: 10px;
+    /* padding-left: 350px; */
+    width: 100%;
+    color: #173F5F;
+    background-color: #fff1e6;
+}
+
+.mini-bio {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* left: 25px; */
+  
+}
+
+.mini-bio-text {
+    font-size: 30px;
+    line-height: 43px;
+  }
+  
+#name{
+position: relative;
+top: 120px;
+animation-name: move-bio-name;
+animation-duration: 2s;
+animation-fill-mode: forwards;
+opacity: 0;
+}
+  
+#description{
+position: relative;
+top:105px;
+animation-name: move-bio-description;
+animation-delay: .5s;
+animation-duration: 2s;
+animation-fill-mode: forwards;
+opacity: 0;
+padding-bottom: 3px;
+}
+  
+@keyframes move-bio-name {
+from {
+    top: 150px;
+}
+to {
+    top: 120px;
+    opacity: 1;
+}
+}
+
+@keyframes move-bio-description {
+from {
+    top: 135px;
+}
+to {
+    top: 105px;
+    opacity: 1;
+}
+}
+
+/* boucing, clickable button to smooth scroll to other sections */
+.view-work {
+    font-size: 40px;
+    height: 80px;
+    position: relative;
+    top: 200px;
+    /* left:-20px; */
+    display: flex;
+    justify-content: center;
+    animation-name: arrow-fadein;
+    animation-duration: 1s;
+    animation-delay: 2.3s;
+    animation-fill-mode:forwards;
+    opacity: 0;
+}
+.view-work2 {
+    font-size: 40px;
+    height: 80px;
+    position: relative;
+    top: -6px;
+    left: -22px;
+    display: flex;
+    justify-content: center;
+    /* animation-name: arrow-fadein; */
+    animation-duration: 1s;
+    animation-delay: 2.3s;
+    animation-fill-mode:forwards;
+    opacity: 1;
+}
+  
+  @keyframes arrow-fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+/* the bounce animation was sourced from Elvis Sedić at https://jsfiddle.net/esedic/rLdv29ou/ */
+
+@-webkit-keyframes bounce {
+    15% {
+        -webkit-transform: translateY(5px);
+        transform: translateY(5px);
+    }
+    30% {
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+    50% {
+        -webkit-transform: translateY(3px);
+        transform: translateY(3px);
+    }
+    65% {
+        -webkit-transform: translateY(-3px);
+        transform: translateY(-3px);
+    }
+    80% {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+@keyframes bounce {
+    15% {
+        -webkit-transform: translateY(5px);
+        transform: translateY(5px);
+    }
+    30% {
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+    50% {
+        -webkit-transform: translateY(3px);
+        transform: translateY(3px);
+    }
+    65% {
+        -webkit-transform: translateY(-3px);
+        transform: translateY(-3px);
+    }
+    80% {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+.view-work p:hover, .view-work2 p:hover
+{
+    -webkit-animation: bounce 1s ease;
+    animation: bounce 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+/* sections */
+#section1{
+    height: 650px;
+}
+  
+#section2{
+    padding-top: 60px;
+    padding-bottom: 20px;
+    height: 710px;
+    font-size: 20px;
+    width: 1200px;
+    padding-left: 230px;
+    line-height: 1.3em;
+}
+
+#section3{
+    padding-top: 30px;
+    padding-bottom: 5px;
+    height: 750px;
+    font-size: 18px;
+    width: 80%;
+    padding-left: 285px;
+    font-size: 23px;
+    line-height: 1.4em;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+/* Explore button */
+  
+.explore-button{
+    display: block;
+    position: relative;
+    top: 80px;
+    left: 350px;
+}
+  
+  
+/* buttons based on an example from https://www.w3schools.com/css/css3_buttons.asp*/
+.explore, input[type=submit] {
+    position: relative;
+    background-color: #ffff;
+    border: 1px solid #EC4F00;
+    border-radius: 25px;
+    color: #EC4F00;
+    font-size: 17px;
+    padding: 13px;
+    width: 130px;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.explore:hover, input[type=submit]:hover {
+    transition-duration: .4s;
+    background-color: #FB9F63 ;
+    color: white;
+}
+
+.explore:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.explore:active:after{
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: .4s
+}
+
+.explore span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.explore span:after {
+    content: '\2023';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.explore:hover span {
+    padding-right: 25px;
+}
+
+.explore:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+
+
+header, main, aside {
+    /* border: dotted 1px #CCC; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* header */
+header {
+    grid-area: top;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #20639B;
+    padding: 20px;
+}
+header img{
+    height: 95px;
+}
+
+header h1, #title{
+    margin-right: 300px;
+    padding: 5px;
+    text-decoration: none;
+    font-size: larger;
+    color: #F6D55C;
+}
+header h2{
+    margin-right: 200px;
+    color: #F6D55C;
+}
+header h3, li, #subtitle{
+    margin-right: 70px;
+    color: #F6D55C;
+    text-decoration: none;
+}
+av.top-nav ul{
+    list-style: none;
+    padding: 0;
+}
+
+header li {
+font-family: sans-serif;
+font-weight: bold;
+/* margin: 15px; */
+display: inline-block;
+/* padding: 2px; */
+user-select: none;
+position: relative;
+}
+
+header li:hover {
+text-decoration: underline;
+}
+
+header li:active{
+color: #fff;
+}
+
+#subtitle:hover{
+    text-decoration: underline;
+}
+    
+.pulldown-menu ul{
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 25%;
+    padding: 20px;
+}
+
+header .pulldown-menu li{
+color: #333;
+/* display: block;
+padding: 3px; */
+font-weight: 168;
+}
+
+.prefect{
+    margin: 0;
+}
+
+header li:hover .pulldown-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+/* flex-wrap: wrap; */
+}
+
+.dropdown a:hover .pulldown-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+/* flex-wrap: wrap; */
+}
+
+.dropdown:hover .pulldown-menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.thumb {
+    width: 140px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+/* styling below the header */
+
+aside {
+    grid-area: left;
+    padding: 10px;
+    /* background-color: #F6F4D2; */
+    background-color: #fff1e6;
+    color: #173F5F;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    height: 660px;
+    /* background-color: white; */
+    /* background-color: #CBDFBD */
+}
+
+aside a{
+    text-decoration: none;
+    color: #20639B;
+}
+
+aside a:hover{
+    text-decoration: underline;
+}
+
+main {
+    grid-area: main;
+    /* padding: 10px; */
+    overflow-y: auto;
+    min-height: calc(100vh - 70px);;
+    /* position: fixed; */
+    /* overflow-y: hidden; */
+    /* background-color: #D4E09B; */
+}
+
+
+/* prefecture list */
+.prefecture-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+/* @media only screen and (max-width: 1000px) {
+    #doctor {
+        flex: 1 1 100%;
+    }
+    #companions {
+        flex: 1 1 100%;
+    }
+    main {
+        flex-direction: column;
+    }  
+} */

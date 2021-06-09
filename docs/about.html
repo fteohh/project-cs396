@@ -2,171 +2,90 @@
 <html lang="en">
     <head>
         <title>Yuru-chara Map</title>
-        <link rel="stylesheet" href="css/prefectures.css">
+        <link rel="stylesheet" href="css/about.css">
         <link rel="icon" type="image/png" href="images/favicon-128.png" sizes="128x128" />
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css' rel='stylesheet' />
     </head>
     <body>
+        <!-- Header and navigation bar; name and logo link to homepage-->
         <header>
             <a href="index.html"><img src="images/flower.png" alt="yuru-chara map logo"></a>
-            <a id="title" href="index.html">yuru-chara map</a>
-            <div class="dropdown">
-                <a id="subtitle" href="prefectures.html">Prefectures</a>
-                <div class ="pulldown-menu">
-                    <ul class = "prefect">Hokkaidō</a>
-                        <a>Hokkaidō</a>
-                    </ul>
-                    <ul class = "prefect">Tōhoku
-                        <a>Aomori</a>
-                        <a>Iwate</a>
-                        <a>Miyagi</a>
-                        <a>Akita</a>
-                        <a>Yamagata</a>
-                        <a>Fukushima</a>
-                    </ul>
-                    <ul class = "prefect">Kantō
-                        <a>Ibaraki</a>
-                        <a>Tochigi</a>
-                        <a>Gunma</a>
-                        <a>Saitama</a>
-                        <a>Chiba</a>
-                        <a>Tōkyō</a>
-                        <a>Kanagawa</a>
-                    </ul>
-                    <ul class = "prefect">Chūbu
-                        <a>Niigata</a>
-                        <a>Toyama</a>
-                        <a>Ishikawa</a>
-                        <a>Fukui</a>
-                        <a>Yamanashi</a>
-                        <a>Nagano</a>
-                        <a>Gifu</a>
-                        <a>Shizuoka</a>
-                        <a>Aichi</a>
-                    </ul>
-                    <ul class = "prefect">Kansai
-                        <a>Mie</a>
-                        <a href= "#" onclick = showPrefectureDetail() data-name= "Shiga">
-                            <a>Shiga</a>
-                        </a>
-                        <a>Kyōto</a>
-                        <a>Ōsaka</a>
-                        <a>Hyōgo</a>
-                        <a>Nara</a>
-                        <a>Wakayama</a>
-                    </ul>
-                    <ul class = "prefect">Chūgoku
-                        <a>Tottori</a>
-                        <a>Shimane</a>
-                        <a>Okayama</a>
-                        <a>Hiroshima</a>
-                        <a>Yamaguchi</a>
-                    </ul>
-                    <ul class = "prefect">Shikoku
-                        <a>Tokushima</a>
-                        <a>Kagawa</a>
-                        <a>Ehime</a>
-                        <a>Kōchi</a>
-                    </ul>
-                    <ul class = "prefect">Kyūshū
-                        <a>Fukuoka</a>
-                        <a>Saga</a>
-                        <a>Nagasaki</a>
-                        <a>Kumamoto</a>
-                        <a>Ōita</a>
-                        <a>Miyazaki</a>
-                        <a>Kagoshima</a>
-                        <a>Okinawa</a>
-                    </ul>
-                </div>
-            </div>
-            <!-- </a> -->
-            <a id="subtitle" href="#">About</a>
-            <a id="subtitle" href="#">Commercial</a>
+            <a id="title" href="index.html" aria-labelledby="yuru-chara map">yuru-chara map</a>
+            <!-- Links to the page with all the prefections/regions -->
+            <a id="subtitle" href="prefectures.html" aria-labelledby="Prefectures">Prefectures</a>
+            <!-- Links to the About page for more yuru-chara and site info -->
+            <a id="subtitle" href="about.html" aria-labelledby="About">About</a>
+            <!-- Links to the page with all the yuru-chara from commercial businesses -->
+            <!-- there are none in the current sample of characters -->
+            <a id="subtitle" href="commercial.html" aria-labelledby="Commercial">Commercial</a>
         </header>
-        <aside id= "prefecture-list">
-            <!-- <div class ="prefecture-list">
-                <ul class = "prefect">Hokkaidō</li>
-                    <li>Hokkaidō</li>
-                </ul>
-                <ul class = "prefect">Tōhoku
-                    <a>
-                        <li>Aomori</li>
-                    </a>
-                    <li>Iwate</li>
-                    <li>Miyagi</li>
-                    <li>Akita</li>
-                    <li>Yamagata</li>
-                    <li>Fukushima</li>
-                </ul>
-                <ul class = "prefect">Kantō
-                    <li>Ibaraki</li>
-                    <li>Tochigi</li>
-                    <li>Gunma</li>
-                    <li>Saitama</li>
-                    <li>Chiba</li>
-                    <li>Tōkyō</li>
-                    <li>Kanagawa</li>
-                </ul>
-                <ul class = "prefect">Chūbu
-                    <li>Niigata</li>
-                    <li>Toyama</li>
-                    <li>Ishikawa</li>
-                    <li>Fukui</li>
-                    <li>Yamanashi</li>
-                    <li>Nagano</li>
-                    <li>Gifu</li>
-                    <li>Shizuoka</li>
-                    <li>Aichi</li>
-                </ul>
-                <ul class = "prefect">Kansai
-                    <li>Mie</li>
-                    <a href= "#" onclick = showPrefectureDetail() data-name= "Shiga">
-                        <li>Shiga</li>
-                    </a>
-                    <li>Kyōto</li>
-                    <li>Ōsaka</li>
-                    <li>Hyōgo</li>
-                    <li>Nara</li>
-                    <li>Wakayama</li>
-                </ul>
-                <ul class = "prefect">Chūgoku
-                    <li>Tottori</li>
-                    <li>Shimane</li>
-                    <li>Okayama</li>
-                    <li>Hiroshima</li>
-                    <li>Yamaguchi</li>
-                </ul>
-                <ul class = "prefect">Shikoku
-                    <li>Tokushima</li>
-                    <li>Kagawa</li>
-                    <li>Ehime</li>
-                    <li>Kōchi</li>
-                </ul>
-                <ul class = "prefect">Kyūshū
-                    <li>Fukuoka</li>
-                    <li>Saga</li>
-                    <li>Nagasaki</li>
-                    <li>Kumamoto</li>
-                    <li>Ōita</li>
-                    <li>Miyazaki</li>
-                    <li>Kagoshima</li>
-                    <li>Okinawa</li>
-                </ul>
-            </div> -->
-        </aside>
+    
         <main>
-            <div id='map' style='width: 100%; height: 655px;'>
-            </div>
-            <!-- <section id="map">
-                Interactive map with markers goes here.
-            </section> -->
-            
-            
-            
+            <div id="screen">
+                <!-- Section 1 of Landing Page: introduction and toggle-->
+                <div id="section1">
+                <!-- Introduction: what are yuru-chara-->
+                <div class="mini-bio">
+                    <div class="mini-bio-text">
+                        <p id="name" >What are <i>yuru-chara (ゆるチャラ)</i>?</p>
+                        <img id= "description" class= "thumb" alt="Hikonyan picture" src ="https://scontent-ort2-2.xx.fbcdn.net/v/t31.18172-8/10557015_1131421616870314_4465642664736976474_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=JS-JW-n81P4AX-38DoK&_nc_ht=scontent-ort2-2.xx&oh=3781ef8cc085d98079970e0698dfdf6a&oe=60D2C41E">
+                        <img id= "description" class= "thumb" alt="Omapyon picture" src ="https://pbs.twimg.com/media/Dh3uQ3GUcAIPeCx.jpg">
+                        <img id= "description" class= "thumb" alt="Funassyi picture" src ="https://64.media.tumblr.com/4d9deb46c48235fc291e6ddabc4b9ce3/tumblr_inline_nkwug4Y8oU1qz909t.jpg">
+                        <img id= "description" class= "thumb" alt="Nemurou picture"src ="https://www.yurugp.jp/img/uploads/character/650/00003378.jpg">
+                    </div>
+                </div>
+                <!-- Toggle to background info: smooth scrolls to Section 2 of the page-->
+                <div class="view-work">
+                    <a href="#section2">
+                    <p aria-labelledby="Smooth Scroll to Backgrund Information">&#8964;</p>
+                    </a>
+                </div>
+                </div>
+        
+                <!-- Section 2 of Landing Page: Background information about yuru-chara -->
+                <div id="section2">
+                    <div id="background-info">
+                        <p><i>Yuru-chara</i> are a type of Japanese mascot character that promote a place, region, event, organization, or business.</p>
+                        <p>They are often created by local governments and other organizations to stimulate tourism and economic development by creating an identity.</p>
+                        <p>You can meet yuru-chara at events, festivals and meet-and-greets, as well as view them on TV programs!</p>
+                        <br>
 
+                        <p>The term was first created by Jun Miura in the early 2000's.</p>
+                        <p>The name yuru-chara is a contraction of <strong>yuru</strong>i mascot <strong>chara</strong>cter (ゆるいマスコットキャラクター). In general, the adjective yurui (緩い) means "loose", but also has other connotations including "gentle", "weak", "laid-back", "light-hearted" or "unimportant".</p>
+                        <p>According to Miura, a yuru-chara must meet three requirements:</p>
+                        <p> 1. It must convey a strong message of love for one's hometown or local region<br>
+                            2. The character's movements/behavior should be unique and unstable or awkward<br>
+                            3. The character should be unsophisticated, laid-back, and lovable</p>
+                    </div> 
+                    
+                    <!-- Toggle to site info: smooth scrolls to Section 3 of the page-->
+                    <div class="view-work2">
+                        <a href="#section3">
+                        <p aria-labelledby="Smooth Scroll to Site Information">&#8964;</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Section 3 of Landing Page: Background information about the site, yuru-chara map-->
+                <div id="section3">
+                    <div id="background-info">
+                        <img src="images/flower.png" class="thumb" alt="yuru-chara map logo">
+                        <p><i>yuru-chara map</i> employs an interactive map that allows users to “explore” Japan and learn more about various regions, prefectures, and cities through their <i>yuru-chara</i>.</p>
+                        <p><i>Yuru-chara</i> often incorporate motifs that represent local culture, history, legends, wildlife, architecture, geography, or produce. This is often portrayed in their physical appearance in an amusing way.</p>
+                        <p>Their name are often a play on words, such as with Kumamon (from Kumamoto Prefecture).</p>
+                    </div> 
+                    <!-- Takes users to the homepage (the page with the largest map) -->
+                    <div class="explore-button">
+                        <a href= "index.html">
+                          <button class="explore" title="Explore" aria-labelledby="Explore!"><span>Explore!</span></button>
+                        </a>
+                      </div>
+                    
+                </div>
+        
+            </div>
         </main>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js'></script>
-        <script src="scripts/prefectures.js" type="text/javascript"></script>
+        <!-- <script src="scripts/about.js" type="text/javascript"></script> -->
     </body>
 </html>

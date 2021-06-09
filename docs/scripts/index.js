@@ -1,9 +1,6 @@
 const baseURL = 'http://localhost:8081';
-let doctors;
-let companions;
 
-// const data = require("../config/data.json");
-
+//creates map and inserts clickable markers for each yuru-chara
 mapboxgl.accessToken = 'pk.eyJ1IjoiZnRlb2giLCJhIjoiY2twYnZ1dWJmMHNjcDMwbjJ3OXBjdmRqZyJ9.BUapBisSyzUKg5TT819v-w';
 var map = new mapboxgl.Map({
 container: 'map', // container ID
@@ -12,7 +9,6 @@ center: [140.693800, 38.869835], // starting position [lng, lat]
 zoom: 4.5 // starting zoom
 });
 
-// document.querySelector('.mapboxgl-map').style.position = 'fixed';
 
 map.addControl(new mapboxgl.FullscreenControl({container: document.querySelector('#map')}));
 map.addControl(new mapboxgl.NavigationControl());
@@ -26,12 +22,10 @@ map.on('load', function () {
         {
           "type": "Feature",
           "properties": {
-            // "name": "Hikonyan",
             "name": "Hikonyan",
             "place_name": "Hikone Castle, Japan",
             "image": "https://scontent-ort2-2.xx.fbcdn.net/v/t31.18172-8/10557015_1131421616870314_4465642664736976474_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=JS-JW-n81P4AX-38DoK&_nc_ht=scontent-ort2-2.xx&oh=3781ef8cc085d98079970e0698dfdf6a&oe=60D2C41E",
-            'description':
-                        '<p>Make it Mount Pleasant is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>'
+            "description":"Hikonyan was born on the 400th anniversary of Hikone Castle's founding. Their design is based on a legend concerning Ii Naotaka, the 3rd Lord of Hikone. The daimyō was beckoned by a white cat to take shelter from a storm in a temple, and was saved from a lightning strike."
           },
           "geometry": {
             "coordinates": [
@@ -47,7 +41,8 @@ map.on('load', function () {
           "properties": {
             "name": "Victoire Cheval Blanc Murao III",
             "place_name": "Hakuba, Japan",
-            "image": "https://cdn-ak.f.st-hatena.com/images/fotolife/C/CNwriting/20190731/20190731202358.jpg"
+            "image": "https://cdn-ak.f.st-hatena.com/images/fotolife/C/CNwriting/20190731/20190731202358.jpg",
+            "description": "VictoireI Cheval Blanc Murao III is the official mascot of Hakuba Village, Nagano Prefecture. He'd rather be village mayor than the winner of the Yuru-chara Grand Prix."
           },
           "geometry": {
             "coordinates": [
@@ -64,6 +59,7 @@ map.on('load', function () {
             "name": "Zao-sama",
             "place_name": "Zao, Japan",
             "image": "https://www.yurugp.jp/img/uploads/character/650/00001016.jpg", 
+            "description":"Zao-sama lives quietly in the depths of the forest of Miyagi Zao. He's shy and comfortably takes things at his pace. ♪ His hobbies are enjoying hot springs and being a gourmet king! ☆ Zao Town is the best place to eat delicious food while looking at the beautiful scenery of the Zao mountain range!"
           },
           "geometry": {
             "coordinates": [
@@ -79,7 +75,8 @@ map.on('load', function () {
           "properties": {
             "name": "Bari-san",
             "place_name": "Imabari, Japan",
-            "image":  "https://www.yurugp.jp/img/uploads/character/650/00000002.jpg"
+            "image":  "https://www.yurugp.jp/img/uploads/character/650/00000002.jpg",
+            "description":"Bari-san is a big chick who is the mascot of Imabari. Inside his haramaki (belly wrap), he carries a ship everywhere he goes."
           },
           "geometry": {
             "coordinates": [
@@ -95,7 +92,8 @@ map.on('load', function () {
           "properties": {
             "name": "Kaparu",
             "place_name": "Shiki, Japan",
-            "image": "https://cdn-ak.f.st-hatena.com/images/fotolife/g/gaou2/20181118/20181118231902.jpg"
+            "image": "https://cdn-ak.f.st-hatena.com/images/fotolife/g/gaou2/20181118/20181118231902.jpg",
+            "description":"Kaparu was born with the motif of Kappa folk tales that have been handed down in the city since ancient times. Despite this, they has a black history of being stored and left for nearly 10 years. Resurrected in 2011 after becoming three-dimensional, he's a playing bass-playing, cucumber obsessed Kappa."
           },
           "geometry": {
             "coordinates": [
@@ -111,7 +109,8 @@ map.on('load', function () {
           "properties": {
             "name": "Sanomaru",
             "place_name": "Sano, Japan",
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00000020.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000020.jpg",
+            "description":"Sanomaru is a samurai who lives in the castle town of Sano with a sword of imo fly in a bowl of Sano ramen. In order to promote the charm of Sano to the world, \"SANO\" is written in Roman letters on the shade so that foreigners can understand it. He is eager to reach the top!"
           },
           "geometry": {
             "coordinates": [
@@ -127,7 +126,8 @@ map.on('load', function () {
           "properties": {
             "name": "Funassyi",
             "place_name": "Funabashi, Japan",
-            "image": "https://64.media.tumblr.com/4d9deb46c48235fc291e6ddabc4b9ce3/tumblr_inline_nkwug4Y8oU1qz909t.jpg"
+            "image": "https://64.media.tumblr.com/4d9deb46c48235fc291e6ddabc4b9ce3/tumblr_inline_nkwug4Y8oU1qz909t.jpg",
+            "description":"Funassyi, or Funadius IV, is a pear fairy and is the fourth of 274 children. They were born in AD 138 and appear on numerous TV programs and commercials. They also issued 4 CD albums and 6 singles, DVDs, starred in its own anime series and live action drama special as well as headlined their own concert. They are the unofficial mascot of Funabashi, Chiba prefecture, and even Japan."
           },
           "geometry": {
             "coordinates": [
@@ -143,7 +143,8 @@ map.on('load', function () {
           "properties": {
             "name": "Ōmapyon",
             "place_name": "Ōmachi, Japan",
-            "image": "https://pbs.twimg.com/media/Dh3uQ3GUcAIPeCx.jpg"
+            "image": "https://pbs.twimg.com/media/Dh3uQ3GUcAIPeCx.jpg",
+            "description":"Ōmapyon is from the Northern Alps. With the motif of Ōmachi City's animal (beast) antelope, the mountain of Atama is an image of the Northern Alps and the rich and pure water of Ōmachi City. Their charm point is their gentle expression."
           },
           "geometry": {
             "coordinates": [
@@ -160,6 +161,7 @@ map.on('load', function () {
             "name": "Tochisuke",
             "place_name": "Tochigi, Japan",
             "image": "https://www.yurugp.jp/img/uploads/character/650/00002023.jpg", 
+            "description":"Tochisuke is a brewery fairy that was born in Tochigi, the city of breweries. As \"Tochigi City's Relief Chief\", I'm doing my best to make everyone's hearts warm ♪ Please cheer me on!（●・人・●）♪"
           },
           "geometry": {
             "coordinates": [
@@ -175,7 +177,8 @@ map.on('load', function () {
           "properties": {
             "name": "Nemurou",
             "place_name": "Nemuro, Japan",
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00003378.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00003378.jpg",
+            "description":"I'm Nemurou, a sleepy fellow born in Nemuro, the easternmost city of Hokkaido. Rou is working hard every day to convey the charm of Nemuro, especially Nemuro's seafood– Hanasaki crab, pacific saury, and kelp– are his favorite foods."
           },
           "geometry": {
             "coordinates": [
@@ -191,7 +194,8 @@ map.on('load', function () {
           "properties": {
             "name": "Midomosu",
             "place_name": "Midori, Japan",
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00004028.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00004028.jpg",
+            "description":"The Iwajuku site was a great discovery that changed the history of Japan. Midomosu is inspired by the mammoth that was said to have lived in that era. Mosu is working hard to reach the top!"
           },
           "geometry": {
             "coordinates": [
@@ -207,7 +211,8 @@ map.on('load', function () {
           "properties": {
             "name": "Okazaemon",
             "place_name": "Aichi, Japan",
-            "image": "https://thesmartlocal.com/japan/wp-content/uploads/2020/07/Weird-Japanese-mascots-11.jpeg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000959.jpg",
+            "description":" Okazaemon is Something like an Okazaki character. He promotes Okazaki with the characters Oka on the face and Saki on the chest. Okazaki City is the birthplace of Ieyasu, Hatcho Miso, and various specialties."
           },
           "geometry": {
             "coordinates": [
@@ -223,7 +228,8 @@ map.on('load', function () {
           "properties": {
             "name": "Pyoko-tan",
             "place_name": "Gifu, Japan",
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00000353.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000353.jpg",
+            "description":"Pyoko-tan is a chick who dreams of becoming a frog. In order to rejuvenate Gifu without permission, it transforms into Gifu's specialty products, but since they are still a chick, they only transform their head."
           },
           "geometry": {
             "coordinates": [
@@ -239,7 +245,9 @@ map.on('load', function () {
           "properties": {
             "name": "Kaki-tan",
             "place_name": "Hashimoto, Japan", 
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00001030.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00001030.jpg",
+            "description":"Kaki-tan LOVES persimmons! Their charm point is the awkwardness of the persimmons on their head and bottom. I am doing my best to let everyone know about delicious persimmons!"
+            
           },
           "geometry": {
             "coordinates": [
@@ -255,7 +263,8 @@ map.on('load', function () {
           "properties": {
             "name": "Ono Joe",
             "place_name": "Onojo, Japan", 
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00000099.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000099.jpg",
+            "description":"I'm Ono Joe from Onojo City! A 12-year-old who is good at dancing, with a red scarf and \"Ishigaki Regent\" as a trademark. Thank you for your support!!!"
           },
           "geometry": {
             "coordinates": [
@@ -271,7 +280,8 @@ map.on('load', function () {
           "properties": {
             "name": "Ayukoro-chan",
             "place_name": "Atsugi, Japan", 
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00000027.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000027.jpg",
+            "description":"I'm Ayukoro-chan, a collaboration between Atsugi's local gourmet white-collar hormone pig and the specialty sweetfish! I really love my handmade happi coat, which is full of the charms of the city such as fireworks, hot springs, and the city's flower azalea!"
           },
           "geometry": {
             "coordinates": [
@@ -287,7 +297,8 @@ map.on('load', function () {
           "properties": {
             "name": "Unari-kun",
             "place_name": "Narita, Japan",
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00000031.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000031.jpg",
+            "description":"Unari-kun is a special tourism ambassador for Narita City and he enthusiastically promotes his favorite Narita with the slogan \"Una.\""
           },
           "geometry": {
             "coordinates": [
@@ -303,7 +314,8 @@ map.on('load', function () {
           "properties": {
             "name": "Arukuma",
             "place_name": "Nagano, Japan",
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00000357.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000357.jpg", 
+            "description": "Arukuma is very rare bear that haunts Shinshu. Even though it's a bear, it's cold so he always wear the hat on his head. Even though he is a bear, he loves traveling and always has a rucksack on his back. His life purpose is to walk around Shinshu spread the charm of Shinshu, which does not have bears, to the world."
           },
           "geometry": {
             "coordinates": [
@@ -319,7 +331,8 @@ map.on('load', function () {
           "properties": {
             "name": "Mikyan",
             "place_name": "Ehime, Japan",
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00000940.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000940.jpg",
+            "description":"Mikyan was born in Ehime, the citrus kingdom ~ ♪ In order to share the charm and love of Ehime to the whole country, please support us with all your heart and soul while valuing our connection with everyone. I'll wait for your support!"
           },
           "geometry": {
             "coordinates": [
@@ -335,7 +348,8 @@ map.on('load', function () {
           "properties": {
             "name": "Gunma-chan",
             "place_name": "Gunma, Japan",
-            "image": "https://dot.asahi.com/S2000/upload/2015062300213_1.jpg"
+            "image": "https://dot.asahi.com/S2000/upload/2015062300213_1.jpg",
+            "description":"Gunma-chan is doing his best as the director of the Gunma Prefecture Promotion Department so that many people can know the charm of Gunma Prefecture, including the world cultural heritage Tomioka Silk Mill and Silk Industry Heritage Group."
           },
           "geometry": {
             "coordinates": [
@@ -351,7 +365,8 @@ map.on('load', function () {
           "properties": {
             "name": "Kumamon",
             "place_name": "Kumamoto, Japan",
-            "image": "https://www.yurugp.jp/img/uploads/character/650/00000001.jpg"
+            "image": "https://www.yurugp.jp/img/uploads/character/650/00000001.jpg",
+            "description":"Kumamon was born on March 12, when the Kyushu Shinkansen Line officially opened. The prefecture's governor appointed Kumamon as Kumamoto's Sales Manager and Happiness Manager. His chubby size is from indulging in Kumamoto's delicious food and he is busy everyday promoting Kumamoto!"
           },
           "geometry": {
             "coordinates": [
@@ -366,17 +381,6 @@ map.on('load', function () {
     }
 });
 
-// map.addLayer({
-//     'id': 'places',
-//     'type': 'circle',
-//     'source': 'places',
-//     'paint': {
-//     'circle-color': '#4264fb',
-//     'circle-radius': 6,
-//     'circle-stroke-width': 2,
-//     'circle-stroke-color': '#ffffff'
-//     }
-//     });
 map.addLayer({
     'id': 'places',
     'type': 'symbol',
@@ -386,42 +390,12 @@ map.addLayer({
     'icon-allow-overlap': true
     }
     });
-// var popup = new mapboxgl.Popup({
-// closeButton: false,
-// closeOnClick: false
-// });
-    
-// map.on('mouseenter', 'places', function (e) {
-// // Change the cursor style as a UI indicator.
-// map.getCanvas().style.cursor = 'pointer';
-    
-// var coordinates = e.features[0].geometry.coordinates.slice();
-// // var description = e.features[0].properties.description;
-// var name = e.features[0].properties.name;
-    
-// // Ensure that if the map is zoomed out such that multiple
-// // copies of the feature are visible, the popup appears
-// // over the copy being pointed to.
-// while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-// coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-// }
-    
-// // Populate the popup and set its coordinates
-// // based on the feature found.
-// popup.setLngLat(coordinates).setHTML(name).addTo(map);
-// });
-    
-// map.on('mouseleave', 'places', function () {
-// map.getCanvas().style.cursor = '';
-// popup.remove();
-// });
-// });
 
 // When a click event occurs on a feature in the places layer, open a popup at the
 // location of the feature, with description HTML from its properties.
 map.on('click', 'places', function (e) {
     var coordinates = e.features[0].geometry.coordinates.slice();
-    //var description = e.features[0].properties.description;
+    var description = e.features[0].properties.description;
     var name = e.features[0].properties.name;
     var place_name = e.features[0].properties.place_name;
     var image = e.features[0].properties.image;
@@ -435,7 +409,7 @@ map.on('click', 'places', function (e) {
      
     new mapboxgl.Popup()
     .setLngLat(coordinates)
-    .setHTML(`<strong>${name}</strong><br><br>` + `<img class= "thumb" src = '${image}' style= 'display: inline-block;'/><br> `+ `<p>${place_name}</p>`)
+    .setHTML(`<p><strong>${name}</strong></p>` + `<img class= "map-thumb" src = '${image}' style= 'display: inline-block;'/><p>${place_name}</p><hr style="opacity: 0.3;">`+ `<p>${description}</p>`)
     .addTo(map);
     });
      
@@ -451,23 +425,23 @@ map.on('click', 'places', function (e) {
     });
 
 
-
+//yuru-chara data
 var yuru_chara = [
 {
     name: "Hikonyan",
     address: "Hikone",
-    // category: ["landmark", "Hikone Castle"],
     prefecture: "Shiga",
     img_url: "https://scontent-ort2-2.xx.fbcdn.net/v/t31.18172-8/10557015_1131421616870314_4465642664736976474_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=JS-JW-n81P4AX-38DoK&_nc_ht=scontent-ort2-2.xx&oh=3781ef8cc085d98079970e0698dfdf6a&oe=60D2C41E",
+    description:"Hikonyan was born on the 400th anniversary of Hikone Castle's founding. Their design is based on a legend concerning Ii Naotaka, the 3rd Lord of Hikone. The daimyō was beckoned by a white cat to take shelter from a storm in a temple, and was saved from a lightning strike.",
     id: 1
 
 },
 {
     name: "Funassyi",
     address: "Funabashi",
-    // category: ["landmark", "Hikone Castle"],
     prefecture: "Chiba",
     img_url: "https://64.media.tumblr.com/4d9deb46c48235fc291e6ddabc4b9ce3/tumblr_inline_nkwug4Y8oU1qz909t.jpg",
+    description:"Funassyi, or Funadius IV, is a pear fairy and is the fourth of 274 children. They were born in AD 138 and appear on numerous TV programs and commercials. They also issued 4 CD albums and 6 singles, DVDs, starred in its own anime series and live action drama special as well as headlined their own concert. They are the unofficial mascot of Funabashi, Chiba prefecture, and even Japan.",
     id: 2,
 }, 
 {
@@ -475,6 +449,7 @@ var yuru_chara = [
     address: "Imabari", 
     prefecture:"Ehime",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000002.jpg", 
+    description:"Bari-san is a big chick who is the mascot of Imabari. Inside his haramaki (belly wrap), he carries a ship everywhere he goes.",
     id: 3
 
 },
@@ -483,6 +458,7 @@ var yuru_chara = [
     address: "Kumamoto", 
     prefecture:"Kumamoto",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000001.jpg", 
+    description:"Kumamon was born on March 12, when the Kyushu Shinkansen Line officially opened. The prefecture's governor appointed Kumamon as Kumamoto's Sales Manager and Happiness Manager. His chubby size is from indulging in Kumamoto's delicious food and he is busy everyday promoting Kumamoto!",
     id: 4
 
 },
@@ -491,6 +467,7 @@ var yuru_chara = [
     address: "Ehime", 
     prefecture:"Ehime",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000940.jpg", 
+    description:"Mikyan was born in Ehime, the citrus kingdom ~ ♪ In order to share the charm and love of Ehime to the whole country, please support us with all your heart and soul while valuing our connection with everyone. I'll wait for your support!",
     id: 5
 },
 {
@@ -498,13 +475,15 @@ var yuru_chara = [
     address: "Nagano", 
     prefecture:"Nagano",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000357.jpg", 
+    description: "Arukuma is very rare bear that haunts Shinshu. Even though it's a bear, it's cold so he always wear the hat on his head. Even though he is a bear, he loves traveling and always has a rucksack on his back. His life purpose is to walk around Shinshu spread the charm of Shinshu, which does not have bears, to the world.",
     id: 6
 },
 {
     name: "Okazaemon",
     address: "Aichi", 
     prefecture:"Aichi",
-    img_url: "https://thesmartlocal.com/japan/wp-content/uploads/2020/07/Weird-Japanese-mascots-11.jpeg", 
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00000959.jpg",
+    description:" Okazaemon is Something like an Okazaki character. He promotes Okazaki with the characters Oka on the face and Saki on the chest. Okazaki City is the birthplace of Ieyasu, Hatcho Miso, and various specialties.", 
     id: 7
 },
 {
@@ -512,6 +491,7 @@ var yuru_chara = [
     address: "Nagano", 
     prefecture:"Nagano",
     img_url: "https://cdn-ak.f.st-hatena.com/images/fotolife/C/CNwriting/20190731/20190731202358.jpg", 
+    description: "VictoireI Cheval Blanc Murao III is the official mascot of Hakuba Village, Nagano Prefecture. He'd rather be village mayor than the winner of the Yuru-chara Grand Prix.",
     id: 8
 },
 {
@@ -519,6 +499,7 @@ var yuru_chara = [
     address: "Fukuoka", 
     prefecture:"Fukuoka",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000099.jpg", 
+    description:"I'm Ono Joe from Onojo City! A 12-year-old who is good at dancing, with a red scarf and \"Ishigaki Regent\" as a trademark. Thank you for your support!!!",
     id: 9
 },
 {
@@ -526,6 +507,7 @@ var yuru_chara = [
     address: "Shiki",
     prefecture:"Saitama",
     img_url: "https://cdn-ak.f.st-hatena.com/images/fotolife/g/gaou2/20181118/20181118231902.jpg", 
+    description:"Kaparu was born with the motif of Kappa folk tales that have been handed down in the city since ancient times. Despite this, they has a black history of being stored and left for nearly 10 years. Resurrected in 2011 after becoming three-dimensional, he's a playing bass-playing, cucumber obsessed Kappa.",
     id: 10
 },
 {
@@ -533,6 +515,7 @@ var yuru_chara = [
     address: "Gunma", 
     prefecture:"Gunma",
     img_url: "https://dot.asahi.com/S2000/upload/2015062300213_1.jpg", 
+    description:"Gunma-chan is doing his best as the director of the Gunma Prefecture Promotion Department so that many people can know the charm of Gunma Prefecture, including the world cultural heritage Tomioka Silk Mill and Silk Industry Heritage Group.",
     id: 11
 },
 {
@@ -540,6 +523,7 @@ var yuru_chara = [
     address: "Sano", 
     prefecture:"Tochigi",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000020.jpg", 
+    description:"Sanomaru is a samurai who lives in the castle town of Sano with a sword of imo fly in a bowl of Sano ramen. In order to promote the charm of Sano to the world, \"SANO\" is written in Roman letters on the shade so that foreigners can understand it. He is eager to reach the top!",
     id: 12
 },
 {
@@ -547,6 +531,7 @@ var yuru_chara = [
     address: "Atsugi", 
     prefecture:"Kanagawa",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000027.jpg", 
+    description:"I'm Ayukoro-chan, a collaboration between Atsugi's local gourmet white-collar hormone pig and the specialty sweetfish! I really love my handmade happi coat, which is full of the charms of the city such as fireworks, hot springs, and the city's flower azalea!",
     id: 13
 },
 {
@@ -554,6 +539,7 @@ var yuru_chara = [
     address: "Narita", 
     prefecture:"Chiba",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000031.jpg", 
+    description:"Unari-kun is a special tourism ambassador for Narita City and he enthusiastically promotes his favorite Narita with the slogan \"Una.\"",
     id: 14
 },
 {
@@ -561,6 +547,7 @@ var yuru_chara = [
     address: "Gifu", 
     prefecture:"Gifu",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00000353.jpg", 
+    description:"Pyoko-tan is a chick who dreams of becoming a frog. In order to rejuvenate Gifu without permission, it transforms into Gifu's specialty products, but since they are still a chick, they only transform their head.",
     id: 15
 },
 {
@@ -568,6 +555,7 @@ var yuru_chara = [
     address: "Tochigi", 
     prefecture:"Tochigi",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00002023.jpg", 
+    description:"Tochisuke is a brewery fairy that was born in Tochigi, the city of breweries. As \"Tochigi City's Relief Chief\", I'm doing my best to make everyone's hearts warm ♪ Please cheer me on!（●・人・●）♪",
     id: 16
 },
 {
@@ -575,6 +563,7 @@ var yuru_chara = [
     address: "Midori", 
     prefecture:"Gunma",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00004028.jpg", 
+    description:"The Iwajuku site was a great discovery that changed the history of Japan. Midomosu is inspired by the mammoth that was said to have lived in that era. Mosu is working hard to reach the top!",
     id: 17
 },
 {
@@ -582,20 +571,23 @@ var yuru_chara = [
     address: "Ōmachi", 
     prefecture:"Nagano",
     img_url: "https://pbs.twimg.com/media/Dh3uQ3GUcAIPeCx.jpg", 
+    description:"Ōmapyon is from the Northern Alps. With the motif of Ōmachi City's animal (beast) antelope, the mountain of Atama is an image of the Northern Alps and the rich and pure water of Ōmachi City. Their charm point is their gentle expression.",
     id: 18
 },
 {
     name: "Zao-sama",
     address: "Zao", 
     prefecture:"Miyagi",
-    img_url: "https://www.yurugp.jp/img/uploads/character/650/00001016.jpg", 
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00001016.jpg",
+    description:"Zao-sama lives quietly in the depths of the forest of Miyagi Zao. He's shy and comfortably takes things at his pace. ♪ His hobbies are enjoying hot springs and being a gourmet king! ☆ Zao Town is the best place to eat delicious food while looking at the beautiful scenery of the Zao mountain range!",
     id: 19
 },
 {
     name: "Kaki-tan",
     address: "Wakayama", 
     prefecture:"Wakayama",
-    img_url: "https://www.yurugp.jp/img/uploads/character/650/00001030.jpg", 
+    img_url: "https://www.yurugp.jp/img/uploads/character/650/00001030.jpg",
+    description:"Kaki-tan LOVES persimmons! Their charm point is the awkwardness of the persimmons on their head and bottom. I am doing my best to let everyone know about delicious persimmons!",
     id: 20
 },
 {
@@ -603,45 +595,62 @@ var yuru_chara = [
     address: "Hokkaido", 
     prefecture:"Hokkaido",
     img_url: "https://www.yurugp.jp/img/uploads/character/650/00003378.jpg", 
+    description:"I'm Nemurou, a sleepy fellow born in Nemuro, the easternmost city of Hokkaido. Rou is working hard every day to convey the charm of Nemuro, especially Nemuro's seafood– Hanasaki crab, pacific saury, and kelp– are his favorite foods.",
     id: 21
-},
-
+}
 ]
 
+//region & prefecture data
+var regions = [
+  {
+    name: "Hokkaidō",
+    prefectures: ["Hokkaidō"]
 
+},
+{
+  name: "Tōhoku",
+  prefectures: ["Aomori", "Iwate", "Miyagi", "Akita", "Yamagata", "Fukushima"]
+},
+{
+  name: "Kantō",
+  prefectures: ["Ibaraki", "Tochigi", "Gunma", "Saitama", "Chiba", "Tōkyō", 
+                "Kanagawa"]
 
-const showDetail = ev => {
-    const id = ev.currentTarget.dataset.id;
-    console.log("click")
-    console.log(id)
+},
+{
+  name: "Chūbu",
+  prefectures: ["Niigata", "Toyama", "Ishikawa", "Fukui", 
+                "Yamanashi", "Nagano","Gifu", "Shizuoka","Aichi"]
 
-    const chara = yuru_chara.filter(chara => chara.id === id)[0];
+},
 
-    document.querySelector('#map').innerHTML = `
-        <div>
-            <p>Map marker location for ${chara.name}<p>
-        </div>`
-};
+{
+  name: "Kansai",
+  prefectures: ["Mie","Shiga","Kyōto","Ōsaka","Hyōgo","Nara","Wakayama"]
 
-const showPrefectureDetail = ev => {
-    
-    console.log("click")
-    console.log(ev)
-    const chara = yuru_chara.filter(chara => chara.prefecture === ev.currentTarget.dataset.prefecture)[0];
-    console.log(chara)
+},
+{
+name: "Chūgoku",
+prefectures: ["Tottori","Shimane","Okayama","Hiroshima","Yamaguchi"]
 
-    
-    document.querySelector('#map').innerHTML = `
-        <div >
-            <p>ev.currentTarget.dataset.prefecture)<p>
-        </div>`
-};
+},
+{
+  name:  "Shikoku",
+  prefectures: ["Tokushima", "Kagawa","Ehime","Kōchi"]
 
+},
+{
+  name:  "Kyūshū",
+  prefectures: ["Fukuoka","Saga","Nagasaki","Kumamoto","Ōita","Miyazaki","Kagoshima","Okinawa"]
 
+}
+]
+
+//renders the left-hand panel of featured yuru-chara
 const listItems = yuru_chara.map(item => 
-    `<tr onclick = >
+    `<tr>
         <td data-id = "${item._id}">
-            <img class= "thumb" src = ${item.img_url} onclick= showDetail()/>
+            <img class= "thumb" alt="${item.name}" src = ${item.img_url} onclick= showDetail()/>
         </td>
         <td>
             <p>${item.name}</p>
@@ -651,15 +660,38 @@ const listItems = yuru_chara.map(item =>
     </tr>`
  );
 
-// document.getElementById('yuru-list').innerHTML = `
-//     <ul>
-//         ${listItems.join('')}
-//     </ul>
-//     `;
 document.getElementById('yuru-list').innerHTML +=
-    `<h3>Featured Yuru-chara</h3>
+    `<h3 aria-labelledby="Featured Yuru-chara">Featured Yuru-chara</h3>
         <table> 
             <tbody> 
                 ${listItems.join('')}
             </tbody>
         </table>`;
+
+
+//renders the pull down menu over 'Prefectures'
+//currently scrapped for design
+
+// const fillPullDown = () =>{
+
+//   const prefectures =(region) =>{
+//     var prefs = region.prefectures
+//     console.log(prefs)
+//     return prefs.map(item=>
+//       `<a href="prefectures.html" onclick=showPrefectureCharas('${item}')>${item}</a>`
+//       )
+//   }
+
+//   const listItems = regions.map(item => 
+//     `<ul class="prefect">${item.name}
+//         ${prefectures(item).join('')}
+//     </ul>`
+//   );
+
+
+//   document.querySelector('.pulldown-menu').innerHTML =
+//     `${listItems.join('')}`
+
+// }
+
+// fillPullDown();
