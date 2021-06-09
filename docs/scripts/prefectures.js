@@ -597,7 +597,7 @@ const showPrefectureCharas = prefecture => {
   if (charas.length ==0){
     document.getElementById('prefecture-list').innerHTML = 
     `<div>
-        <button class="btn" aria-labelledby="Back" onClick= showRegions()>Back</button>
+        <button class="btn" aria-labelledby="Back" role="button" onClick= showRegions()>Back</button>
         <h3 aria-labelledby="${prefecture}'s Yuru-chara">${prefecture} Prefecture's Yuru-chara</h3>
         <p>No <i>yuru-chara</i> found for ${prefecture} :(</p>
     </div>`
@@ -621,7 +621,7 @@ const showPrefectureCharas = prefecture => {
     document.getElementById('prefecture-list').innerHTML =
 
           `<div>
-              <button class="btn" onClick= showRegions() aria-labelledby="Back">Back</button>
+              <button class="btn" onClick= showRegions() role="button" aria-labelledby="Back">Back</button>
               <div class="prefecture-charas">
                   <h3 aria-labelledby="${prefecture}'s Yuru-chara">${prefecture} Prefecture's Yuru-chara</h3>
                     <table> 
@@ -652,7 +652,7 @@ const showCharaDetails = name =>{
     // console.log("After removal:", features);
 
     document.querySelector('#prefecture-list').innerHTML = `
-        <button class="btn" onClick= showPrefectureCharas('${chara.prefecture}')>Back</button>
+        <button class="btn" onClick= showPrefectureCharas('${chara.prefecture}') role="button">Back</button>
         <div class="ind-chara">
             <img src='${chara.img_url}' class="ind-thumb" alt="${chara.name}">
             <div class="chara-details">
