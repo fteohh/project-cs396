@@ -24,7 +24,7 @@ map.on('load', function () {
           "properties": {
             "name": "Hikonyan",
             "place_name": "Hikone Castle, Japan",
-            "image": "https://scontent-ort2-2.xx.fbcdn.net/v/t31.18172-8/10557015_1131421616870314_4465642664736976474_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=JS-JW-n81P4AX-38DoK&_nc_ht=scontent-ort2-2.xx&oh=3781ef8cc085d98079970e0698dfdf6a&oe=60D2C41E",
+            "image": "https://scontent-ort2-2.xx.fbcdn.net/v/t31.18172-8/10557015_1131421616870314_4465642664736976474_o.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=2UQm87cdbv0AX_JFuWI&_nc_ht=scontent-ort2-2.xx&oh=e751b7201dbfdabbdcbad8c682f561fe&oe=6178E11E",
             "description":"Hikonyan was born on the 400th anniversary of Hikone Castle's founding. Their design is based on a legend concerning Ii Naotaka, the 3rd Lord of Hikone. The daimyō was beckoned by a white cat to take shelter from a storm in a temple, and was saved from a lightning strike."
           },
           "geometry": {
